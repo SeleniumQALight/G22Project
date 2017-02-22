@@ -34,5 +34,8 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+        //some changes made again 17.02.2017
+        //some changes (3rd time)
+        //some changes (4th time)
     }
 }

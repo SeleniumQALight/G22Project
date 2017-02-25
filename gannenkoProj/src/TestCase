@@ -1,7 +1,7 @@
 TC: Verify that after clicking 'Зарегистрироваться' button registration page is displayed
 Steps:
-    1. Go to 'http://v3.test.itpmgroup.com/login'
-    2. Click 'Зарегистрироваться' button
+    1.  Go to 'http://v3.test.itpmgroup.com/login'
+    2.  Click 'Зарегистрироваться' button
 Expected result: 'v3.test.itpmgroup.com/register.html' page is displayed
 
 TC: Verify that existing user is not able to log in with invalid password
@@ -24,7 +24,7 @@ Steps:
     8.  Put 'NewOperation' value into 'Service operations' input
     9.  Select value '13' in date dropdown
     10. Select value 'июня' in month dropdown
-    11. Select value '2016' in year dropdown
+    11. Select value '2012' in year dropdown
     12. Select value '23' in hour dropdown
     13. Select value '59' in minutes dropdown
     14. Select value 'testSA' in 'Аппарат' dropdown

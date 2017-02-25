@@ -1,0 +1,36 @@
+TC: Verify that after clicking 'Зарегистрироваться' button registration page is displayed
+Steps:
+    1. Go to 'http://v3.test.itpmgroup.com/login'
+    2. Click 'Зарегистрироваться' button
+Expected result: 'v3.test.itpmgroup.com/register.html' page is displayed
+
+TC: Verify that existing user is not able to log in with invalid password
+Steps:
+    1.  Go to 'http://v3.test.itpmgroup.com/login'
+    2.  Put 'yy401@bigmir.net' value into 'Email' input
+    3.  Put any invalid value into 'Password' input (f.ex. '90909')
+    4.  Click 'Enter' button
+Expected result: Error message is displayed: "Invalid username or password"
+
+TC: Verify that user can delete previously added item in 'Обслуживание' list
+Steps:
+    1.  Go to 'http://v3.test.itpmgroup.com/login'
+    2.  Put 'yy401@bigmir.net' value into 'Email' input
+    3.  Put '909090' value into 'Password' input
+    4.  Click 'Enter' button
+    5.  Click 'Обслуживание' button
+    6.  Click 'Add' button
+    7.  Put 'NewChange' value into 'Service changes' input
+    8.  Put 'NewOperation' value into 'Service operations' input
+    9.  Select value '13' in date dropdown
+    10. Select value 'июня' in month dropdown
+    11. Select value '2016' in year dropdown
+    12. Select value '23' in hour dropdown
+    13. Select value '59' in minutes dropdown
+    14. Select value 'testSA' in 'Аппарат' dropdown
+    15. Select value 'Petrenko Petro Petrovych' in 'Сотрудник' dropdown
+    16. Click 'Создать' button
+    17. Click on previously added item
+    18. Click on 'Удалить' button
+    19. Click 'Yes' on dialog 'Do you really want to delete this item?'
+Expected result: Previously added item is not presented in 'Обслуживание' list

@@ -1,0 +1,35 @@
+Test case # KM-1
+Summary - Authorization of current user
+Pre-comdition - User is registrated
+Description:
+1. Open web-site http://v3.test.itpmgroup.com/ Учет запчастей
+2. Put the valid data in fields Email and Password (Email - Student, Password - 909090)
+3. Push the button Войти
+Expected result - Successful authorization. The presence of avatar Студент.
+
+Test case # KM-2
+Summary - Authorization of current user
+Description:
+1. Open web-site http://v3.test.itpmgroup.com/login
+2. Put the invalid data in fields Email and Password (Email - W222, Password - fdsjkfdsl)
+3. Push the button Войти
+Expected result - The login form does not disappear
+
+
+Test case # KM-3
+Summary - Check the items on the "Профиль" page
+Pre-comdition - User is registrated
+Description:
+1. Open web-site http://v3.test.itpmgroup.com/ Учет запчастей
+2. Put the valid data in fields Email and Password (Email - Student, Password - 909090)
+3. Push the button Войти
+4. Click on avatar Студент
+5. Сlick on button Профиль
+Expected result - New page named "Профиль пользователя Студент" with input fields:
+-Адрес email
+-Пользователь
+-Студент
+-Логин
+-Пароль
+-Подтверждение пароля
+-Buttons - Сохранить, Удалить

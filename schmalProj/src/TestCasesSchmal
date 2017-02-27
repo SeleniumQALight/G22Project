@@ -1,0 +1,64 @@
+Тest Case Number (ID)	TC.1
+TC Creator	SchmalE
+TC Executor	SchmalE
+Comments:
+Creation date	26.02.2017
+Execution date	26.02.2017
+OS:	MS Windows 7 Ultimate 32-bit
+Browser version:	Mozilla Firefox 47.0.2
+
+Target:	Проврека открытия страницы по ссылке "Напомнить пароль"
+Precondition	В указанном браузере открыть сайт по URL: http://v3.test.itpmgroup.com/login
+Steps:
+1	Ввести email "Student" в поле "Email"
+2	Нажать на ссылку "Напомнить пароль"
+
+Expected result:	Открытие новой страницы с сообщением: "На Ваш электронный адрес был выслан пароль"
+Actual result	Перезагрузка текущей страницы
+
+Defect ID	def_TC.1
+
+
+
+Тест Кейс Номер (ID)	TC.2
+TC Creator	SchmalE
+TC Executor	SchmalE
+Comments:
+Creation date	26.02.2017
+Execution date	26.02.2017
+OS:	MS Windows 7 Ultimate 32-bit
+Browser version:	Mozilla Firefox 47.0.2
+
+Target:	Проврека открытия страницы по ссылке "Зарегистрироваться"
+Precondition	В указанном браузере открыть сайт по URL: http://v3.test.itpmgroup.com/login
+Steps:
+1	Нажать на ссылку "Зарегистрироваться"
+
+Expected result:	Открытие страницы с формой регистрации пользователя
+Actual result	Открытие страницы с сообщением "404 Страница не найдена.
+Запрашиваемая страница не была найдена.Вернитесь на главную страницу"
+
+Defect ID	def_TC.2
+
+
+
+Тест Кейс Номер (ID)	TC.3
+TC Creator	SchmalE
+TC Executor	SchmalE
+Comments:
+Creation date	26.02.2017
+Execution date	26.02.2017
+OS:	MS Windows 7 Ultimate 32-bit
+Browser version:	Mozilla Firefox 47.0.2
+
+Target:	Проврека открытия главной страницы после авторизации пользователя
+Precondition	В указанном браузере открыть сайт по URL: http://v3.test.itpmgroup.com/login
+Steps:
+1	Ввести значение "Student" в поле Email
+2	Ввести значение "909090" в поле Password
+3	Нажать на кнопку "Вход"
+
+Expected result:	Открытие главной страницы сайта
+Actual result	Открытие главной страницы сайта
+
+Defect ID  no

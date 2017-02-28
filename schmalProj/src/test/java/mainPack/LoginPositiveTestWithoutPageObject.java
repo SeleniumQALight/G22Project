@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginPositiveTestWithoutPageObject {
     WebDriver webDriver;    //variable webDriver declared
 
-    @Test;                  //reference to the autotest
+    @Test                  //reference to the autotest
     public void loginPositiveTestWithoutPageObject() {
         webDriver = new ChromeDriver();   //here is the browser where tests will be run;
         webDriver.manage().window().maximize();     //maximizing the open window of the browser
@@ -31,6 +31,7 @@ public class LoginPositiveTestWithoutPageObject {
 
 
         webDriver.quit();  //quit - deleting object (=browser);  close - closing tab, browser is opened
+        System.out.println("Autotest successfully completed.");
     }
 
 }

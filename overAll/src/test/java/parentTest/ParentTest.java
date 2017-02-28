@@ -1,5 +1,6 @@
 package parentTest;
 
+import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
@@ -26,6 +27,7 @@ import static org.hamcrest.Matchers.is;
 public class ParentTest {
     private WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
+    private Utils utils = new Utils();
 
     private boolean isTestPass = false;
 
@@ -59,19 +61,19 @@ public class ParentTest {
         File file = new File("");
 
         if ("fireFox".equals(browser)) {
-            System.out.println("FireFox will be started");
+            log.info("FireFox will be started");
             File fileFF = new File("./drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
             driver = new FirefoxDriver();
-            System.out.println(" FireFox is started");
+            log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
-            System.out.println("Chrome will be started");
+            log.info("Chrome will be started");
             File fileFF = new File("./drivers/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
             driver = new ChromeDriver();
-            System.out.println(" Chrome is started");
+            log.info(" Chrome is started");
         } else if ("iedriver".equals(browser)) {
-            System.out.println("IE will be started");
+            log.info("IE will be started");
             File file1 = new File("./drivers/IEDriverServer.exe");
             System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
@@ -79,15 +81,17 @@ public class ParentTest {
             capabilities.setCapability("ignoreZoomSetting", true);
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             driver = new InternetExplorerDriver();
-            System.out.println(" IE is started");
+            log.info(" IE is started");
         } else if ("opera".equals(browser)) {
-            System.out.println("Opera will be started");
+            log.info("Opera will be started");
             File fileOpera = new File("./drivers/operadriver.exe");
             System.setProperty("webdriver.chrome.driver", fileOpera.getAbsolutePath());
             driver = new ChromeDriver();
-            System.out.println(" Opera is started");
+            log.info(" Opera is started");
         }
 
+        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
+                + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -98,6 +102,9 @@ public class ParentTest {
     @After
     public void tearDown() {
         if (!(driver == null)) {
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenShot, driver);
+            }
             driver.quit();
         }
     }
@@ -105,7 +112,7 @@ public class ParentTest {
 
     public void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {
-
+            utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);
         }
         Assert.assertThat(message + "Browser - " + browser + " ScreenShot " + pathToScreenShot, actual, is(expected));
@@ -114,7 +121,7 @@ public class ParentTest {
 
     public void checkAC(String message, Boolean actual, Boolean expected) {
         if (!(actual == expected)) {
-
+            utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);
         }
         Assert.assertThat(message + "Browser - " + browser + " ScreenShot " + pathToScreenShot, actual, is(expected));

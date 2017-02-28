@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(value = Parameterized.class)
 public class ParentTest {
-    private WebDriver driver;
+    protected WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
 
@@ -33,18 +33,17 @@ public class ParentTest {
 
     private String pathToScreenShot;
     private String browser;
-    protected String browserForIgnoreBug;
+
 
     public ParentTest(String browser) {
         this.browser = browser;
-        browserForIgnoreBug = this.browser;
     }
 
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
-                {"fireFox"}
-                ,
+//                {"fireFox"}
+//                ,
                 {"chrome"}
 //                ,
 //                { "iedriver" }
@@ -62,19 +61,19 @@ public class ParentTest {
 
         if ("fireFox".equals(browser)) {
             log.info("FireFox will be started");
-            File fileFF = new File("./drivers/geckodriver.exe");
+            File fileFF = new File(".././drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
             driver = new FirefoxDriver();
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");
-            File fileFF = new File("./drivers/chromedriver.exe");
+            File fileFF = new File(".././drivers/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Chrome is started");
         } else if ("iedriver".equals(browser)) {
             log.info("IE will be started");
-            File file1 = new File("./drivers/IEDriverServer.exe");
+            File file1 = new File(".././drivers/IEDriverServer.exe");
             System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
@@ -84,7 +83,7 @@ public class ParentTest {
             log.info(" IE is started");
         } else if ("opera".equals(browser)) {
             log.info("Opera will be started");
-            File fileOpera = new File("./drivers/operadriver.exe");
+            File fileOpera = new File(".././drivers/operadriver.exe");
             System.setProperty("webdriver.chrome.driver", fileOpera.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Opera is started");

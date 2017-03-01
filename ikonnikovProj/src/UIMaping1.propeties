@@ -1,0 +1,13 @@
+# Authorization
+Authorization.input.email=xpath(".//input[@name='_username']")
+Authorization.input.password=xpath(".//input[@id='password']")
+Authorization.Enter.button=xpath(".//button[@type='submit']")
+
+
+#AddRecords
+Select.Section.Dictionary=xpath(".//li[@id='dictionary']/a/span[text()='Словари']")
+Select.Section.Apparat=xpath(".//a[@href='/dictionary/apparat']")
+Click.Button.Add=xpath(" ")
+Select.Field.ApparatNumber=xpath(".//input[@id='apparat_apparatNumber']")
+Select.Field.ApparatComment=xpath(".//input[@id='apparat_apparatComment']")
+Click.Button.Creatoin=xpath(".//button[@name='add'] ")

@@ -1,18 +1,36 @@
 ==== TestCases= ==
 
-==TC1==
+Test Case #1: Login in website
+1)Pre-condition
+Open browser
 
-1)(Pre-condition)
-Залогинится на сайт http://v3.test.itpmgroup.com/
+2) Test Case Description
+2.1. Open link  http://v3.test.itpmgroup.com/login
+2.2. Enter "Student" in email field
+2.3. Enter "909090" in password field
+2.4. Click "Вход" button.
 
-2) (Test Case Description)
-Создание нового аппарата:
+Expected Result: Main page is opened
 
-- Выбрать раздел Словари-Аппарта
-- Создание нового аппарата  с даннными:
-   Apparat number: 5555
-   Apparat comment: to observe time
+3)Post Conditions
+Click "Студент -> Выход" button. Close the browser.
+======================================================
 
-3)(PostConditions)
--  удалить запись
-- выйти с сайта
+Test Case #2: Create new record in "Словари -> Аппарат" section
+
+1)Pre-condition
+Open browser.
+Open link  http://v3.test.itpmgroup.com/login
+To authorize
+
+2) Test Case Description
+2.1 Select "Слоdари -> Аппарат" section
+2.2 Creating a new record with the data:
+    Apparat number: 5555
+    Apparat comment: to observe time
+
+Expected Result: Record is created
+
+3)Post Conditions
+Delete recording and log off. Close the browser.
+=======================================================

@@ -29,6 +29,8 @@ public class LoginPositiveTestWithoutPageObject {
 
         Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed());
 
+
+
         webDriver.quit();
 
     }

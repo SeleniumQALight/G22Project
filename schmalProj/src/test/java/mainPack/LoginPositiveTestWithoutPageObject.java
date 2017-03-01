@@ -16,6 +16,7 @@ public class LoginPositiveTestWithoutPageObject {
         webDriver = new ChromeDriver();   //here is the browser where tests will be run;
         webDriver.manage().window().maximize();     //maximizing the open window of the browser
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);     //the of timeout of the browser's waiting for the page opening
+
         webDriver.get("http://v3.test.itpmgroup.com"); //opening website
 
         webDriver.findElement(By.name("_username")).clear();  //locating the field "Login" and clearing its contents
@@ -27,7 +28,7 @@ public class LoginPositiveTestWithoutPageObject {
         webDriver.findElement(By.tagName("button")).click();  //locating the "Submit" button and clicking on it;
 
         Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed());
-        //verifying if the page in xpath is displayed = if the test runs positively
+        //verifying ACCEPTANCE CRITERIA: if the page in xpath is displayed = if the test runs positively
 
 
         webDriver.quit();  //quit - deleting object (=browser);  close - closing tab, browser is opened

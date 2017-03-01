@@ -20,8 +20,8 @@ public class LoginPositiveTestWithoutPageObject {
     webDriver.get("http://v3.test.itpmgroup.com");
     webDriver.findElement(By.name("_username")).clear();
     webDriver.findElement(By.name("_username")).sendKeys("Student");
-    webDriver.findElement(By.id("_password")).clear();
-    webDriver.findElement(By.id("_password")).sendKeys("909090");
+    webDriver.findElement(By.id("password")).clear();
+    webDriver.findElement(By.id("password")).sendKeys("909090");
     webDriver.findElement(By.tagName("button")).click();
 
     Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed());

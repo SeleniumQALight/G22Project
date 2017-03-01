@@ -19,10 +19,10 @@ public class UnsuccesfullLogin {
 
         @Test
         public void UnsuccesfullLogin() {
-//       System.setProperty("webdriver.gecko.driver", "E:\\Download\\Download\\geckodriver-v0.11.1-win64\\geckodriver.exe");
-//       webDriver = new FirefoxDriver();
-            System.setProperty("webdriver.chrome.driver", "D:\\All_Projects\\QA_light\\G22YR\\G22Project\\drivers\\chromedriver_win32\\chromedriver.exe");
-            webDriver = new ChromeDriver();
+       System.setProperty("webdriver.gecko.driver", "D:\\Drivers\\geckodriver-v0.11.1-win64\\geckodriver.exe");
+  webDriver = new FirefoxDriver();
+    //        System.setProperty("webdriver.chrome.driver", "D:\\All_Projects\\QA_light\\G22YR\\G22Project\\drivers\\chromedriver_win32\\chromedriver.exe");
+          //  webDriver = new ChromeDriver();
 
 
             webDriver.manage().window().maximize();

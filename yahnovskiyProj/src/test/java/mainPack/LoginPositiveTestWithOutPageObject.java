@@ -20,7 +20,7 @@ public class LoginPositiveTestWithOutPageObject {
     public void loginPositiveTestWithOutPageObject() {
 //       System.setProperty("webdriver.gecko.driver", "E:\\Download\\Download\\geckodriver-v0.11.1-win64\\geckodriver.exe");
 //       webDriver = new FirefoxDriver();
-        System.setProperty("webdriver.chrome.driver", "D:\\All_Projects\\QA_light\\G22Project\\G22Project\\drivers\\chromedriver_win32\\chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "D:\\All_Projects\\QA_light\\G22YR\\G22Project\\drivers\\chromedriver_win32\\chromedriver.exe");
         webDriver = new ChromeDriver();
 
 
@@ -32,7 +32,7 @@ public class LoginPositiveTestWithOutPageObject {
         webDriver.findElement(By.name("_username")).clear();
         webDriver.findElement(By.name("_username")).sendKeys("Student");
         webDriver.findElement(By.id("password")).clear();
-        webDriver.findElement(By.id("password")).sendKeys("909090");
+        webDriver.findElement(By.id("password")).sendKeys("909090*");
         webDriver.findElement(By.tagName("button")).click();
 
         Assert.assertTrue(webDriver.findElement(By.xpath(".//*[@class='user-panel']")).isDisplayed());

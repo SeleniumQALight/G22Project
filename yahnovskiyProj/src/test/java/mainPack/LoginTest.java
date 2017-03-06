@@ -14,7 +14,9 @@ public class LoginTest extends ParentTest {
 
     @Test
     public void validLogOn(){
-        driver.get("http://v3.test.itpmgroup.com");
+        //.get("http://v3.test.itpmgroup.com");
+        loginPage.open("http://v3.test.itpmgroup.com/");
+        loginPage.checkTitle("Account of spare:Авторизация");
 
         driver.findElement(By.name("_username")).clear();
         driver.findElement(By.name("_username")).sendKeys("Student");

@@ -1,6 +1,7 @@
 package Pages;
 
 
+import libs.ActionsWithTestElements;
 import org.apache.log4j.Logger;
 import static org.hamcrest.Matchers.is;
 import org.junit.Assert;
@@ -9,10 +10,17 @@ import org.openqa.selenium.WebDriver;
 public class ParentPage {
     WebDriver driver;
     Logger logger;
+    ActionsWithTestElements actionsWithTestElements;
+
+    /**
+     * Constructor : inputting driver in constr to not open browser for each page
+     * @param driver
+     */
 
     public ParentPage(WebDriver driver){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
+        actionsWithTestElements = new ActionsWithTestElements(driver);
     }
 
     /**

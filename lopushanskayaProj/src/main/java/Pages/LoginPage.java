@@ -52,6 +52,10 @@ public class LoginPage extends ParentPage{
         actionsWithTestElements.enterText(".//*[@id = 'password']", pass);
     }
 
+    public void clickButtonLogin(){
+        actionsWithTestElements.clickOnElement(".//*button");
+
+    }
 
 
 

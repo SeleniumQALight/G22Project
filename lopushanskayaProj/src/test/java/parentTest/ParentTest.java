@@ -1,5 +1,6 @@
 package parentTest;
 
+import Pages.LoginPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -33,10 +34,13 @@ public class ParentTest {
 
     private String pathToScreenShot;
     private String browser;
+    protected LoginPage loginPage;
 
 
     public ParentTest(String browser) {
+
         this.browser = browser;
+        loginPage = new LoginPage(driver);
     }
 
     @Parameterized.Parameters

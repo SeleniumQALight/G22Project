@@ -22,22 +22,32 @@ public class ActionsWithTestElements {
 
     /**
      * better way
-     * @param xpathlocator
+     * @param xpathLocator
      * @param text
      */
 
-    public  void  enterText(String xpathlocator, String text){
+    public  void  enterText(String xpathLocator, String text){
         try {
-            driver.findElement(By.xpath(xpathlocator)).clear();
-            driver.findElement(By.xpath(xpathlocator)).clear();
+            driver.findElement(By.xpath(xpathLocator)).clear();
+            driver.findElement(By.xpath(xpathLocator)).sendKeys(text);
             logger.info("Text was inputted");
         } catch (Exception o){
-            logger.error("Cannot open xpath locator " + xpathlocator);
-            Assert.fail("Cannot open xpath locator " + xpathlocator);
+            logger.error("Cannot open xpath locator " + xpathLocator);
+            Assert.fail("Cannot open xpath locator " + xpathLocator);
 
         }
     }
 
 
+    public void clickOnElement(String xpathLocator) {
 
+        try {
+            driver.findElement(By.xpath(xpathLocator)).click();
+            logger.info("Button was clicked");
+        } catch (Exception o){
+            logger.error("Cannot open button xpath locator " + xpathLocator);
+            Assert.fail("Cannot open button xpath locator " + xpathLocator);
+        }
+
+    }
 }

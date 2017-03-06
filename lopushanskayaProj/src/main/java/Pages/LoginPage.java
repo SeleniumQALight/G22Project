@@ -15,5 +15,4 @@ public class LoginPage extends ParentPage{
         super(driver);
     }
 
-
 }

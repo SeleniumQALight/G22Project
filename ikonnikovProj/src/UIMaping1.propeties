@@ -1,13 +1,38 @@
-# Authorization
+#Authorization
 Authorization.input.email=xpath(".//input[@name='_username']")
 Authorization.input.password=xpath(".//input[@id='password']")
-Authorization.Enter.button=xpath(".//button[@type='submit']")
-
+Authorization.enter.button=xpath(".//button[@type='submit']")
+Authorization.avatar.button=xpath(".//div[@class='pull-left image']//img[@class='img-circle']")
 
 #AddRecords
 Select.Section.Dictionary=xpath(".//li[@id='dictionary']/a/span[text()='Словари']")
 Select.Section.Apparat=xpath(".//a[@href='/dictionary/apparat']")
-Click.Button.Add=xpath(" ")
+Select.Button.Add.Apparat=xpath(".//div[@class='box-footer']//button[@class='btn btn-info']")
 Select.Field.ApparatNumber=xpath(".//input[@id='apparat_apparatNumber']")
 Select.Field.ApparatComment=xpath(".//input[@id='apparat_apparatComment']")
-Click.Button.Creatoin=xpath(".//button[@name='add'] ")
+Select.Button.Creation=xpath(".//button[@name='add']")
+Select.Section.Workers=xpath(".//a[@href='/dictionary/workers']")
+Select.Button.Add=xpath(".//div[@class='box-tools']/a[@class='btn btn-info btn-sm']")
+Select.Section.WorkersSurname=xpath(".//input[@id='workers_workerSurname']")
+Select.Section.WorkersName=xpath(".//input[@id='workers_workerName']")
+Select.Section.WorkersMiddleName=xpath(".//input[@id='workers_workerMiddleName']")
+Select.Section.WorkersPhone=xpath(".//input[@id='workers_workerPhone']")
+Select.Section.Installation=xpath(".//a[@href='/dictionary/installation']")
+Select.Field.InstallationApparat=xpath(".//select[@id='installation_apparat']")
+Select.Field.InstallationWorker=xpath(".//select[@id='installation_worker']")
+Select.Field.InstallationDate.Day=(".//div[@id='installation_installationDate']/select[@id='installation_installationDate_date_day']")
+Select.Field.InstallationDate.Month=(".//div[@id='installation_installationDate']/select[@id='installation_installationDate_date_month']")
+Select.Field.InstallationDate.Year =(".//div[@id='installation_installationDate']/select[@id='installation_installationDate_date_year']")
+Select.Field.InstallationDate.Hour =(".//div[@id='installation_installationDate']/select[@id='installation_installationDate_time_hour']")
+Select.Field.InstallationDate.Minute =(".//div[@id='installation_installationDate']/select[@id='installation_installationDate_time_minute']")
+
+#RecordInformation
+Find.Record.Apparat=xpath(".//td[contains(text(), 'to observe time')]")
+Find.Record.Worker=xpath(".//td[contains(text(), 'Alexandrov Alex Alexsander')]")
+Find.Record.InstallationApparat=xpath(".//select[@id='installation_apparat']/option[contains(text(), 'to observe time')]")
+Find.Record.InstallationWorker=xpath(".//select[@id='installation_worker']/option[contains(text(), 'Alexandrov Alex Alexsander')]")
+Find.Record.Installation=xpath(".//tr[.//td[contains(text(), 'to observe time')]] ")
+
+
+#DeleteRecord
+Delete.Record.Dictionary=xpath(".//div[@class='box-footer']/button[@class='btn btn-danger pull-right']")

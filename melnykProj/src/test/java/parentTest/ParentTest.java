@@ -1,5 +1,6 @@
 package parentTest;
 
+import Pages.LoginPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -33,6 +34,8 @@ public class ParentTest {
 
     private String pathToScreenShot; // path ot sceenshot
     private String browser; // manage browsers - @Parameterized.Parameters
+
+    protected LoginPage loginPage;
 
 
     public ParentTest(String browser) {
@@ -94,6 +97,7 @@ public class ParentTest {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        loginPage = new LoginPage(driver);
 
 
     }

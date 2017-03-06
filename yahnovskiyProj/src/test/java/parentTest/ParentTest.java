@@ -34,7 +34,7 @@ public class ParentTest {
     private String pathToScreenShot;
     private String browser;
 
-
+    protected
     public ParentTest(String browser) {
         this.browser = browser;
     }

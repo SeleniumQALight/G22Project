@@ -2,6 +2,8 @@ package Pages;
 
 
 import static org.hamcrest.Matchers.is;
+
+import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +11,12 @@ import org.openqa.selenium.WebDriver;
 public class ParentPage {
     WebDriver driver;
     Logger logger;
+    ActionsWithOurElements actionsWithOurElements;
+
     public ParentPage(WebDriver driver){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
+        actionsWithOurElements = new ActionsWithOurElements(driver);
 /**
  * Method for open page with url
  * @param url

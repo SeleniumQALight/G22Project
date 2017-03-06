@@ -40,7 +40,7 @@ public class ParentTest {
     public ParentTest(String browser) {
 
         this.browser = browser;
-        loginPage = new LoginPage(driver);
+
     }
 
     @Parameterized.Parameters
@@ -99,6 +99,7 @@ public class ParentTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        loginPage = new LoginPage(driver);
 
     }
 

@@ -25,11 +25,12 @@ Description:
 3. Push the button Войти
 4. Click on avatar Студент
 5. Сlick on button Профиль
-Expected result - New page named "Профиль пользователя Студент" with input fields:
+Expected result - New page named "Профиль пользователя Студент" and items:
 -Адрес email
--Пользователь
--Студент
--Логин
--Пароль
--Подтверждение пароля
--Buttons - Сохранить, Удалить
+- Пользователь
+- Логин
+- Пароль
+- Подтверждение пароля
+- button Save
+- button Delete
+

@@ -35,5 +35,14 @@ public class ActionsWithOurElements {
             Assert.fail("Cannot click button");
         }
     }
+    public void actualResult (String xpathLocator) {
+        try {
+            driver.findElement(By.xpath(xpathLocator)).isDisplayed();
+            logger.info("Element was found");
+        } catch (Exception e) {
+            logger.error("Cannot found element");
+            Assert.fail("Cannot found element");
+        }
+    }
 }
 

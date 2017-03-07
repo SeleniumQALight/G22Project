@@ -1,17 +1,17 @@
 package Pages;
 
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends ParentPage {
 
 
+    public Boolean actualResult;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    public void enterLogin (String login) {
+    /*public void enterLogin (String login) {
         try {
             driver.findElement(By.name("_username")).clear();
             driver.findElement(By.name("_username")).sendKeys(login);
@@ -20,6 +20,9 @@ public class LoginPage extends ParentPage {
             logger.error("Cannot work with input login");
             Assert.fail("Cannot work with input login");
         }
+    }*/
+    public void enterLogin (String login) {
+        actionsWithOurElements.enterText(".//input[@name='_username']", login);
     }
     public void enterPass (String pass) {
         actionsWithOurElements.enterText(".//*[@id='password']", pass);
@@ -27,5 +30,12 @@ public class LoginPage extends ParentPage {
     public void clickOnButtonLogin () {
         actionsWithOurElements.clickOnButtonLogin (".//button");
     }
+
+
+    public Boolean actualResult () {
+        actionsWithOurElements.actualResult(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
+        return true;
+    }
 }
+
 

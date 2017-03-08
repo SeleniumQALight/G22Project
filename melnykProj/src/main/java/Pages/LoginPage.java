@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage extends ParentPage {
 
 
-    public Boolean actualResult;
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,7 +33,11 @@ public class LoginPage extends ParentPage {
 
 
     public Boolean actualResult () {
-        actionsWithOurElements.actualResult(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
+       actionsWithOurElements.actualResult(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
+        return true;
+    }
+    public Boolean actualResultNegativeTest () {
+        actionsWithOurElements.actualResult(".//*/b[contains(text(),'Учет запчастей')]");
         return true;
     }
 }

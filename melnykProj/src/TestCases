@@ -13,7 +13,7 @@ Description:
 1. Open web-site http://v3.test.itpmgroup.com/login
 2. Put the invalid data in fields Email and Password (Email - W222, Password - fdsjkfdsl)
 3. Push the button Войти
-Expected result - The login form does not disappear
+Expected result - The login form does not disappear. Present title Учет запчастей.
 
 
 Test case # KM-3

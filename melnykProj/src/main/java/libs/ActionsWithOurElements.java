@@ -44,5 +44,23 @@ public class ActionsWithOurElements {
             Assert.fail("Cannot found element");
         }
     }
+    public void clickAvatar (String xpathLocator) {
+        try {
+            driver.findElement(By.xpath(xpathLocator)).click();
+            logger.info("Element was found and clicked");
+        } catch (Exception e) {
+            logger.error("Cannot found element Avatar");
+            Assert.fail("Cannot found element Avatar");
+        }
+    }
+    public void clickProfile (String xpathLocator) {
+        try {
+            driver.findElement(By.xpath(xpathLocator)).click();
+            logger.info("Element was found and clicked");
+        } catch (Exception e) {
+            logger.error("Cannot found element Avatar");
+            Assert.fail("Cannot found element Avatar");
+        }
+    }
 }
 

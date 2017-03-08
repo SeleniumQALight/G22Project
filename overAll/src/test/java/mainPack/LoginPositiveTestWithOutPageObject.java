@@ -8,13 +8,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by user on 27.02.2017.
- */
-public class LoginpositivTestWithoutPageobject {
+
+public class LoginPositiveTestWithOutPageObject {
     WebDriver webDriver;
+
     @Test
-    public void loginpositivTestWithoutPageobject(){
+    public void loginPositiveTestWithOutPageObject(){
         webDriver =new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -31,7 +30,5 @@ public class LoginpositivTestWithoutPageobject {
                 .isDisplayed());
 
         webDriver.quit();
-
-
     }
 }

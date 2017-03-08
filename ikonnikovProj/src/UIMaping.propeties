@@ -1,0 +1,7 @@
+#TC1
+Select.Section.Dictionary=xpath(".//li[@id='dictionary']/a/span[text()='Словари']")
+Select.Section.Apparat=xpath(".//a[@href='/dictionary/apparat']")
+Click.Button.Add=xpath(" ")
+Select.Field.ApparatNumber=xpath(".//input[@id='apparat_apparatNumber']")
+Select.Field.ApparatComment=xpath(".//input[@id='apparat_apparatComment']")
+Click.Button.Creatoin=xpath(".//button[@name='add'] ")

@@ -1,0 +1,20 @@
+==== TestCases= ==
+
+==TC1==
+
+1)(Pre-condition)
+Залогинится на сайт http://v3.test.itpmgroup.com/
+
+2) (Test Case Description)
+Создание нового аппарата:
+
+- Выбрать раздел Словари-Аппарта
+- Создание нового аппарата  с даннными:
+   Apparat number: 5555
+   Apparat comment: to observe time
+
+3)(PostConditions)
+-  удалить запись
+- выйти с сайта
+
+------------

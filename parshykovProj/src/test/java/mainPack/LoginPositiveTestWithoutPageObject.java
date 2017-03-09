@@ -8,17 +8,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by user on 27.02.2017.
- */
-public class LoginpositivTestWithoutPageobject {
+public class LoginPositiveTestWithoutPageObject {
     WebDriver webDriver;
+
     @Test
-    public void loginpositivTestWithoutPageobject(){
-        webDriver =new ChromeDriver();
+    public void loginPositiveTestWithoutPageObject() {
+        webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        webDriver.get("http://v3.test.itpmgroup.com/login");
+
+        webDriver.get("http://v3.test.itpmgroup.com/");
 
         webDriver.findElement(By.name("_username")).clear();
         webDriver.findElement(By.name("_username")).sendKeys("Student");
@@ -27,11 +26,12 @@ public class LoginpositivTestWithoutPageobject {
         webDriver.findElement(By.id("password")).sendKeys("909090");
 
         webDriver.findElement(By.tagName("button")).click();
-        Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))
-                .isDisplayed());
 
-        webDriver.quit();
+        Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed());
 
+
+
+        //webDriver.quit();
 
     }
 }

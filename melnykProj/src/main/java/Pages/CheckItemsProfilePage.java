@@ -30,7 +30,7 @@ public class CheckItemsProfilePage extends ParentPage {
 
     }
 
-    public Boolean isElementsPresent () {
+    public Boolean isProfileItemsPresent () {
         actionsWithOurElements.isElementPresent(".//*//h3[@class='box-title' and text()='Профиль пользователя Студент']");
         actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_email']");
         actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_name']");

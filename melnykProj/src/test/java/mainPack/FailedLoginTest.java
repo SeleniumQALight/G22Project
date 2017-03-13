@@ -16,7 +16,7 @@ public class FailedLoginTest extends ParentTest {
         loginPage.enterLogin("W222");
         loginPage.enterPass("fdsjkfdsl");
         loginPage.clickOnButtonLogin();
-        checkAC( "Actual result = expected result. Failed negative Login Test", loginPage.actualResultNegativeTest(), true);
+        checkAC( "Actual result = expected result. Failed negative Login Test", loginPage.isForFailedTest(), true);
 
     }
 

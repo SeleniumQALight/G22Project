@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class ActionsWithOurElements {
@@ -35,15 +36,16 @@ public class ActionsWithOurElements {
             Assert.fail("Cannot click button");
         }
     }
-    public void actualResult (String xpathLocator) {
+
+    public boolean isElementPresent(String xpathLocator) {
         try {
-            driver.findElement(By.xpath(xpathLocator)).isDisplayed();
-            logger.info("Element was found");
+            WebElement webElement = driver.findElement(By.xpath(xpathLocator));
+            return webElement.isDisplayed() && webElement.isEnabled();
         } catch (Exception e) {
-            logger.error("Cannot found element");
-            Assert.fail("Cannot found element");
+            return false;
         }
     }
+
     public void clickAvatar (String xpathLocator) {
         try {
             driver.findElement(By.xpath(xpathLocator)).click();

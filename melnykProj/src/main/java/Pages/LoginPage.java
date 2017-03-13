@@ -6,11 +6,10 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage extends ParentPage {
 
 
-
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
     /*public void enterLogin (String login) {
         try {
             driver.findElement(By.name("_username")).clear();
@@ -21,25 +20,29 @@ public class LoginPage extends ParentPage {
             Assert.fail("Cannot work with input login");
         }
     }*/
-    public void enterLogin (String login) {
+    public void enterLogin(String login) {
         actionsWithOurElements.enterText(".//input[@name='_username']", login);
     }
-    public void enterPass (String pass) {
+
+    public void enterPass(String pass) {
         actionsWithOurElements.enterText(".//*[@id='password']", pass);
     }
-    public void clickOnButtonLogin () {
-        actionsWithOurElements.clickOnButtonLogin (".//button");
+
+    public void clickOnButtonLogin() {
+        actionsWithOurElements.clickOnButtonLogin(".//button");
     }
 
 
-    public Boolean actualResult () {
-       actionsWithOurElements.actualResult(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
-        return true;
+    public boolean isAvatarPresent() {
+        return actionsWithOurElements.isElementPresent(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
     }
-    public Boolean actualResultNegativeTest () {
-        actionsWithOurElements.actualResult(".//*/b[contains(text(),'Учет запчастей')]");
-        return true;
+
+    public boolean isForFailedTest () {
+        return actionsWithOurElements.isElementPresent(".//*/b[contains(text(),'Учет запчастей')]");
+
     }
 }
+
+
 
 

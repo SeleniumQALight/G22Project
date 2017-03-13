@@ -21,7 +21,7 @@ public class CheckItemsProfile extends ParentTest {
         checkItemsProfilePage.clickAvatar();
         checkItemsProfilePage.clickProfile();
 
-        checkAC( "Actual result != expected result", checkItemsProfilePage.actualResult(), true);
+        checkAC( "Actual result != expected result", checkItemsProfilePage.isElementsPresent(), true);
 
 
     }

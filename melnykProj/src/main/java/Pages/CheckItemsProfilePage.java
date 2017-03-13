@@ -30,15 +30,15 @@ public class CheckItemsProfilePage extends ParentPage {
 
     }
 
-    public Boolean actualResult () {
-        actionsWithOurElements.actualResult(".//*//h3[@class='box-title' and text()='Профиль пользователя Студент']");
-        actionsWithOurElements.actualResult(".//*[@id='userProfileEdit_user_email']");
-        actionsWithOurElements.actualResult(".//*[@id='userProfileEdit_user_name']");
-        actionsWithOurElements.actualResult(".//*[@id='userProfileEdit_user_username']");
-        actionsWithOurElements.actualResult(".//*[@id='userProfileEdit_user_password_password']");
-        actionsWithOurElements.actualResult(".//*[@id='userProfileEdit_user_password_password_confirm']");
-        actionsWithOurElements.actualResult(".//button[@name='save']");
-        actionsWithOurElements.actualResult(".//button[@name='delete']");
+    public Boolean isElementsPresent () {
+        actionsWithOurElements.isElementPresent(".//*//h3[@class='box-title' and text()='Профиль пользователя Студент']");
+        actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_email']");
+        actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_name']");
+        actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_username']");
+        actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_password_password']");
+        actionsWithOurElements.isElementPresent(".//*[@id='userProfileEdit_user_password_password_confirm']");
+        actionsWithOurElements.isElementPresent(".//button[@name='save']");
+        actionsWithOurElements.isElementPresent(".//button[@name='delete']");
         return true;
     }
 

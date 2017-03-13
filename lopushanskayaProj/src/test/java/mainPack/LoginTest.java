@@ -28,12 +28,21 @@ public class LoginTest extends ParentTest {
 
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
-
-
         driver.findElement(By.tagName("button")).click();
         //checkAC("Avatar not present ", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed(), true);
          homePage.checkTitle("Учет запчастей");
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
+    }
+
+    @Test
+    public void invalidLogin(){
+        loginPage.open("http://v3.test.itpmgroup.com");
+        loginPage.checkTitle("Account of spare:Авторизация");
+        loginPage.enterLogin("student");
+        loginPage.enterPass("909090");
+        loginPage.clickButtonLogin();
+        checkAC("Title not expected", loginPage.getTitle(),"Account of spare:Авторизация");
+
     }
 
 }

@@ -51,13 +51,6 @@ public class ActionsWithTestElements {
     }
 
 
-    public void clickOnElement(String xpathLocator) {
-
-
-
-
-
-    }
 
     public void clickOnElement(WebElement buttonLogin) {
         try {

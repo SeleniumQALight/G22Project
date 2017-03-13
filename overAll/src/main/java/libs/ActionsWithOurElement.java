@@ -26,6 +26,7 @@ public class ActionsWithOurElement {
             logger.error("Can not work with input");
             Assert.fail("Can not work with input");
         }
+
     }
 
     public void clickOnElement(String xpathLocator) {
@@ -37,8 +38,19 @@ public class ActionsWithOurElement {
             logger.error("Can not work with button");
             Assert.fail("Can not work with button");
         }
-    }
 
+    }
+    public void enterText(WebElement element, String text) {
+        try {
+            element.clear();
+            element.sendKeys(text);
+            logger.info(text + " was inputed");
+
+        } catch (Exception e) {
+            logger.error("Can not work with input");
+            Assert.fail("Can not work with input");
+        }
+    }
     /**
      * Method checked is element present on page
      * @param xpathLocator
@@ -51,5 +63,27 @@ public class ActionsWithOurElement {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void clickOnElement(WebElement buttonLogin){
+        try {
+            driver.findElement(By.xpath(".//button")).click();
+            logger.info("Element was clecked");
+
+        } catch (Exception e) {
+            logger.error("Can not work with button");
+            Assert.fail("Can not work with button");
+        }
+
+
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+        return  element.isDisplayed() && element.isEnabled();
+        }catch (Exception e){
+            return  false;
+        }
+
     }
 }

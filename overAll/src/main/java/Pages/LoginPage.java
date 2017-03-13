@@ -4,12 +4,27 @@ package Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends ParentPage {
+    @FindBy(name = "_username")
+    WebElement loginInput;
+    @FindBy(id= "password")
+    WebElement passInput;
+    @FindBy(xpath= ".//button")
+    WebElement buttonLogin;
+
 
 
     public LoginPage(WebDriver driver) {
         super(driver);
+
+        PageFactory.initElements(driver,this);
+    }
+    public void openLoginPage(){
+        open("http://v3.test.itpmgroup.com");
     }
 
     public void enterLogin(String login) {
@@ -28,11 +43,17 @@ public class LoginPage extends ParentPage {
     }
 
     public void clickButtonLogin() {
-        actionsWithOurElement.clickOnElement(".//button");
+        actionsWithOurElement.clickOnElement(buttonLogin);
     }
 
-    public boolean isAvatarPresent() {
-        return actionsWithOurElement.isElementPresent(
-                ".//div[@class='pull-left image']//img[@class='img-circle']");
+    public void loginUser(String login,String pass){
+        openLoginPage();
+        checkTitle("Account of spare:Авторизация");
+        enterLogin(login);
+        enterPass(pass);
+        clickButtonLogin();
     }
+
+
+
 }

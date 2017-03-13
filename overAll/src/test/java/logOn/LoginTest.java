@@ -11,12 +11,21 @@ public class LoginTest extends ParentTest {
     @Test
     public void validLogOn(){
 
-        loginPage.open("http://v3.test.itpmgroup.com");
+        loginPage.openLoginPage();
         loginPage.checkTitle("Account of spare:Авторизация");
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
         loginPage.clickButtonLogin();
+        homePage.checkTitle("Учет запчастей");
 
-        checkAC("Avatar Not present ", loginPage.isAvatarPresent(),true);
+        checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
+    }
+    @Test
+    public void unvalidLogOn(){
+      loginPage.loginUser("studend","909090");
+
+        checkAC("Title not expected ", loginPage.getTitle(),"Account of spare:Авторизация");
+
+
     }
 }

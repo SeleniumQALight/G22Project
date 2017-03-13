@@ -8,6 +8,7 @@ import org.apache.xerces.impl.xs.identity.Selector;
 import static org.hamcrest.Matchers.is;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class ParentPage {
     WebDriver driver;
@@ -18,6 +19,7 @@ public class ParentPage {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
+        PageFactory.initElements(driver,this);
     }
 
     /**
@@ -42,5 +44,9 @@ public class ParentPage {
             logger.error("Can not work with page " );
             Assert.fail("Can not work with page " );
         }
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
     }
 }

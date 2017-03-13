@@ -11,14 +11,19 @@ public class LoginTest extends ParentTest {
     }
 
     @Test
-    public void validLogOn(){
-        driver.get("http://v3.test.itpmgroup.com/");
+    public void validLogOn() {
+        //driver.get("http://v3.test.itpmgroup.com/");
 
-        driver.findElement(By.name("_username")).clear();
-        driver.findElement(By.name("_username")).sendKeys("Student");
+        loginPage.open("http://v3.test.itpmgroup.com/");
+        loginPage.checkTitle("Account of spare:Авторизация");
 
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("909090");
+//        driver.findElement(By.name("_username")).clear();
+//        driver.findElement(By.name("_username")).sendKeys("Student");
+        loginPage.enterLogin("Student");
+
+//        driver.findElement(By.id("password")).clear();
+//        driver.findElement(By.id("password")).sendKeys("909090");
+        loginPage.enterPass("909090");
 
         driver.findElement(By.tagName("button")).click();
 

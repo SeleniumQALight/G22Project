@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import static org.hamcrest.Matchers.is;   //manually written
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 //creating current driver and transiting it to the variable driver
 public class ParentPage {
@@ -16,6 +17,7 @@ public class ParentPage {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
+        PageFactory.initElements(driver, this);
     }
 
     /**
@@ -46,4 +48,8 @@ public class ParentPage {
          }
      }
 
+    //13.03.2017
+    public String getTitle() {
+        return driver.getTitle();
+    }
 }

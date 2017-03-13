@@ -37,17 +37,45 @@ public class ActionsWithTestElements {
 
         }
     }
+    public void enterText(WebElement element, String text){
+        try{
+            element.clear();
+            element.sendKeys(text);
+            logger.info("Text was inputted");}
+            catch (Exception o){
+            logger.error("Cannot input text " + text);
+            Assert.fail("Cannot input text " + text);
+
+        }
+
+    }
 
 
     public void clickOnElement(String xpathLocator) {
 
+
+
+
+
+    }
+
+    public void clickOnElement(WebElement buttonLogin) {
         try {
-            driver.findElement(By.xpath(xpathLocator)).click();
+            buttonLogin.click();
             logger.info("Button was clicked");
         } catch (Exception o){
-            logger.error("Cannot open button xpath locator " + xpathLocator);
-            Assert.fail("Cannot open button xpath locator " + xpathLocator);
+            logger.error("Cannot open button  " + buttonLogin);
+            Assert.fail("Cannot open button  " + buttonLogin);
         }
 
+    }
+
+    public boolean isElementPresent(String xpathLocator) {
+        try {
+            WebElement webElement = driver.findElement(By.xpath(xpathLocator));
+            return webElement.isDisplayed() && webElement.isEnabled();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

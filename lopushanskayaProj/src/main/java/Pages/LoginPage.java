@@ -15,8 +15,14 @@ public class LoginPage extends ParentPage{
      * @param driver
      */
 
-    @FindBy(name = "_username")
+    @FindBy(name = "_username") //=driver.findElement(By.name("_username"))
     WebElement loginInput;
+    @FindBy(id = "password") //".//*[@id = 'password']" - locator
+    WebElement passInput;
+    @FindBy(xpath = ".//*button")
+    WebElement buttonLogin;
+
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -24,8 +30,8 @@ public class LoginPage extends ParentPage{
 
     public void enterLogin(String login){
         try{
-            driver.findElement(By.name("_username")).clear();
-            driver.findElement(By.name("_username")).sendKeys(login);
+            loginInput.clear();
+            loginInput.sendKeys(login);
             logger.info("Login '"+login+"' was entered in input ");
         } catch (Exception o){
             logger.error("Cannot work with input login");
@@ -54,14 +60,18 @@ public class LoginPage extends ParentPage{
      * @param pass
      */
     public void enterPass (String pass){
-        actionsWithTestElements.enterText(".//*[@id = 'password']", pass);
+        actionsWithTestElements.enterText(passInput, pass);
     }
 
     public void clickButtonLogin(){
-        actionsWithTestElements.clickOnElement(".//*button");
+        actionsWithTestElements.clickOnElement(buttonLogin);
 
     }
 
+    public boolean isAvatarPresent() {
+        return actionsWithTestElements.isElementPresent(
+                ".//div[@class='pull-left image']//img[@class='img-circle']");
+    }
 
 
 }

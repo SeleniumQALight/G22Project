@@ -7,6 +7,7 @@ import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class ParentPage {
     WebDriver driver;
@@ -17,6 +18,7 @@ public class ParentPage {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElements = new ActionsWithOurElements(driver);
+        PageFactory.initElements(driver, this);
 /**
  * Method for open page with url
  * @param url
@@ -43,5 +45,9 @@ Assert.assertThat("Title not match", driver.getTitle(),
 
 
         }
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
     }
 }

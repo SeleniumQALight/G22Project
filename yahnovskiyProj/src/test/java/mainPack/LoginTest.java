@@ -14,21 +14,30 @@ public class LoginTest extends ParentTest {
 
     @Test
     public void validLogOn(){
-        //.get("http://v3.test.itpmgroup.com");
-        loginPage.open("http://v3.test.itpmgroup.com/");
+        loginPage.openLoginPage();
         loginPage.checkTitle("Account of spare:Авторизация");
-
-//        driver.findElement(By.name("_username")).clear();
-//        driver.findElement(By.name("_username")).sendKeys("Student");
         loginPage.enterLogin("Student");
-
-//        driver.findElement(By.id("password")).clear();
-//        driver.findElement(By.id("password")).sendKeys("909090");
         loginPage.enterPass("909090");
-
-  // driver.findElement(By.tagName("button")).click();
         loginPage.clickButtonLogin();
-        checkAC("Avatar Not present ", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))
-                .isDisplayed(),true);
+        homePage.checkTitle("Учет запчастей");
+        checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
+    }
+
+//    @Test
+//    public void unvalidLogon(){
+//        loginPage.open("http://v3.test.itpmgroup.com/");
+//        loginPage.checkTitle("Account of spare:Авторизация");
+//        loginPage.enterLogin("studend");
+//        loginPage.enterPass("909090");
+//        loginPage.clickButtonLogin();
+//        loginPage.checkTitle("Account of spare:Авторизация");
+//        checkAC("Title not expected", loginPage.getTitle(), "Account of spare:Авторизация");
+//
+//    }
+    @Test
+    public void unvalidLogon(){
+        loginPage.loginUser("Studentd", "909090");
+        checkAC("Title not expected", loginPage.getTitle(), "Account of spare:Авторизация");
+
     }
 }

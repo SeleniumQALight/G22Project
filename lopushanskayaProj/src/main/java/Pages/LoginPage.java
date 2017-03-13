@@ -70,10 +70,7 @@ public class LoginPage extends ParentPage{
 
     }
 
-    public boolean isAvatarPresent() {
-        return actionsWithTestElements.isElementPresent(
-                ".//div[@class='pull-left image']//img[@class='img-circle']");
-    }
+
 
 
 }

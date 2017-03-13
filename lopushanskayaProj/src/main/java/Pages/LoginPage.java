@@ -3,6 +3,8 @@ package Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by Admin on 06.03.2017.
@@ -12,6 +14,9 @@ public class LoginPage extends ParentPage{
      * Constructor : to not open browser for each page
      * @param driver
      */
+
+    @FindBy(name = "_username")
+    WebElement loginInput;
 
     public LoginPage(WebDriver driver) {
         super(driver);

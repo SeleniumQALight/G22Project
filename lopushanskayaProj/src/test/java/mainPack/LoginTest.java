@@ -9,6 +9,11 @@ public class LoginTest extends ParentTest {
         super(browser);
 
     }
+
+
+
+
+
     @Test
     public void validLogin (){
         /**
@@ -36,11 +41,7 @@ public class LoginTest extends ParentTest {
 
     @Test
     public void invalidLogin(){
-        loginPage.open("http://v3.test.itpmgroup.com");
-        loginPage.checkTitle("Account of spare:Авторизация");
-        loginPage.enterLogin("student");
-        loginPage.enterPass("909090");
-        loginPage.clickButtonLogin();
+        loginPage.fulLoginUser("sttttdent","909090");
         checkAC("Title not expected", loginPage.getTitle(),"Account of spare:Авторизация");
 
     }

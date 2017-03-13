@@ -70,6 +70,18 @@ public class LoginPage extends ParentPage{
 
     }
 
+    public void openLoginPage(){
+        open("http://v3.test.itpmgroup.com");
+    }
+
+    public void fulLoginUser(String login, String password){
+        openLoginPage();
+        checkTitle("Account of spare:Авторизация");
+        enterLogin(login);
+        enterPass(password);
+        clickButtonLogin();
+    }
+
 
 
 

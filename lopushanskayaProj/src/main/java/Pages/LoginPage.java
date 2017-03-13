@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Admin on 06.03.2017.
@@ -26,6 +27,7 @@ public class LoginPage extends ParentPage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this); //this - in this class; findby - describes, pagefactory - creates
     }
 
     public void enterLogin(String login){

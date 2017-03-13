@@ -23,7 +23,7 @@ public class LoginTest extends ParentTest {
         //driver.findElement(By.name("_password")).clear();
         //driver.findElement(By.id("password")).sendKeys("909090");
         loginPage.enterPass("909090");
-        
+
         driver.findElement(By.tagName("button")).click();
 
         checkAC("Avatar not present ", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))

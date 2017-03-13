@@ -4,6 +4,8 @@ import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
 import static org.hamcrest.Matchers.is;
 
 public class ParentPage {
@@ -15,6 +17,7 @@ public class ParentPage {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElements = new ActionsWithOurElements(driver);
+        PageFactory.initElements(driver,this);
     }
 
     /**
@@ -39,6 +42,10 @@ public class ParentPage {
             logger.error("Can not work with page ");
             Assert.fail("Can not work with page ");
         }
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
     }
 
 

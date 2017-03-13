@@ -1,19 +1,29 @@
 package Pages;
 
 import junit.framework.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends ParentPage {
+
+    @FindBy(name = "_username")
+    WebElement loginInput;
+
+    @FindBy(id = "password")
+    WebElement passwordInput;
+
+    @FindBy(xpath = ".//button")
+    WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void enterLogin (String login) {
+    public void enterLogin(String login) {
         try {
-            driver.findElement(By.name("_username")).clear();
-            driver.findElement(By.name("_username")).sendKeys(login);
+            loginInput.clear();
+            loginInput.sendKeys(login);
             logger.info(login + " was entered in input");
         } catch (Exception e) {
             logger.error("Can not work with login input");
@@ -21,8 +31,12 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public void enterPass (String password) {
-        actionsWithOurElements.enterText(".//input[@id='password']", password);
+    public void enterPass(String password) {
+        actionsWithOurElements.enterText(passwordInput, password);
+    }
+
+    public void clickButtonLogin() {
+        actionsWithOurElements.clickOnElement(loginButton);
     }
 
 }

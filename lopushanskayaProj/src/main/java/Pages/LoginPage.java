@@ -27,7 +27,7 @@ public class LoginPage extends ParentPage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this); //this - in this class; findby - describes, pagefactory - creates
+
     }
 
     public void enterLogin(String login){

@@ -35,7 +35,8 @@ public class LoginTest extends ParentTest {
 
          */
 
-        checkAC("Avatar Not present ", loginPage.isAvatarPresent(),true);
+
+        checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 
 }

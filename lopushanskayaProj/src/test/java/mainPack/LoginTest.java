@@ -31,11 +31,8 @@ public class LoginTest extends ParentTest {
 
 
         driver.findElement(By.tagName("button")).click();
-        /*checkAC("Avatar not present ", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed(), true);
-
-         */
-
-
+        //checkAC("Avatar not present ", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed(), true);
+         homePage.checkTitle("Учет запчастей");
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 

@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 
 public class ParentPage {
@@ -19,6 +20,7 @@ public class ParentPage {
         this.driver = driver;
         logger = logger.getLogger(getClass());
         actionsWithOurElements = new ActionsWithOurElements(driver);
+        PageFactory.initElements(driver,this);
     }
 
     /**
@@ -46,5 +48,9 @@ public class ParentPage {
             Assert.fail("Can not work with page");
         }
 
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
     }
 }

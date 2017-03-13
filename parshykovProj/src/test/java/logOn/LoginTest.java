@@ -14,7 +14,7 @@ public class LoginTest extends ParentTest {
     public void validLogOn() {
         //driver.get("http://v3.test.itpmgroup.com/");
 
-        loginPage.open("http://v3.test.itpmgroup.com/");
+        loginPage.openLoginPage();
         loginPage.checkTitle("Account of spare:Авторизация");
 
 //        driver.findElement(By.name("_username")).clear();
@@ -24,9 +24,18 @@ public class LoginTest extends ParentTest {
 //        driver.findElement(By.id("password")).clear();
 //        driver.findElement(By.id("password")).sendKeys("909090");
         loginPage.enterPass("909090");
+        loginPage.clickButtonLogin();
+        //driver.findElement(By.tagName("button")).click();
+        homePage.checkTitle("Учет запчастей");
+        checkAC("Avatar is not present", homePage.isAvatarPresent(), true);
 
-        driver.findElement(By.tagName("button")).click();
+    }
 
-        checkAC("Avatar is not present", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed(), true);
+    @Test
+    public void unvalidLogOn() {
+        loginPage.loginUser("student", "909090");
+        checkAC("Title is not expected", loginPage.getTitle()
+                , "Account of spare:Авторизация");
+
     }
 }

@@ -13,16 +13,16 @@ public class ActionsWithOurElements {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
     }
-    public void enterText(String xpathLocator, String text){
-        try{
-            driver.findElement(By.xpath(xpathLocator)).clear();
-            driver.findElement(By.xpath(xpathLocator)).sendKeys(text);
-            logger.info(text + "was input");
-        }catch (Exception e){
-            logger.error("Can not work with input login");
-            Assert.fail("Can not work with input login");
-        }
-    }
+//    public void enterText(String xpathLocator, String text){
+//        try{
+//            driver.findElement(By.xpath(xpathLocator)).clear();
+//            driver.findElement(By.xpath(xpathLocator)).sendKeys(text);
+//            logger.info(text + "was input");
+//        }catch (Exception e){
+//            logger.error("Can not work with input login");
+//            Assert.fail("Can not work with input login");
+//        }
+//    }
     public  void enterText(WebElement element, String text){
         try{
             element.clear();

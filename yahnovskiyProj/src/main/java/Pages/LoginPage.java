@@ -79,6 +79,10 @@ public class LoginPage extends ParentPage {
     public void clickButtonLogin() {
         actionsWithOurElements.clickOnElement(buttonLogin);
     }
+    public boolean isAvatarPresent() {
+        return actionsWithOurElements.isElementPresent(
+                ".//div[@class='pull-left image']//img[@class='img-circle']");
+    }
 
     public void loginUser(String login, String pass){
 

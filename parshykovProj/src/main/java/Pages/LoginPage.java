@@ -1,8 +1,6 @@
 package Pages;
 
-
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,10 +22,11 @@ public class LoginPage extends ParentPage {
 
     }
 
-    public void openLoginPage(){
-        open("http://v3.test.itpmgroup.com");
+    public void openLoginPage() {
+        open("http://v3.test.itpmgroup.com/");
     }
 
+    // индусский код
     public void enterLogin(String login) {
         try {
             loginInput.clear();
@@ -39,22 +38,20 @@ public class LoginPage extends ParentPage {
         }
     }
 
+    // нормальный код
     public void enterPass(String pass) {
-
-        actionsWithOurElement.enterText(passInput, pass);
+        actionsWithOurElements.enterText(".//*[@id='password']", pass);
     }
 
     public void clickButtonLogin() {
-        actionsWithOurElement.clickOnElement(buttonLogin);
+        actionsWithOurElements.clickOnElement(buttonLogin);
     }
-
-
     public void loginUser(String login, String pass){
         openLoginPage();
         checkTitle("Account of spare:Авторизация");
         enterLogin(login);
         enterPass(pass);
         clickButtonLogin();
-
     }
+
 }

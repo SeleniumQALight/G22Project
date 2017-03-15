@@ -35,20 +35,22 @@ public class ParentTest {
 
     private String pathToScreenShot;
     private String browser;
-
     protected LoginPage loginPage;
     protected HomePage homePage;
 
+
     public ParentTest(String browser) {
+
         this.browser = browser;
+
     }
 
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
-   //             {"fireFox"}
+//                {"fireFox"}
 //                ,
-             {"chrome"}
+                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,
@@ -96,9 +98,9 @@ public class ParentTest {
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
                 + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
-
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
 

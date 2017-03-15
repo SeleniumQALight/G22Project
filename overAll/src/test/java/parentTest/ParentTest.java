@@ -101,7 +101,7 @@ public class ParentTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
-        homePage= new HomePage(driver);
+        homePage = new HomePage(driver);
 
 
     }

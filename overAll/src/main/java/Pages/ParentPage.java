@@ -46,6 +46,7 @@ public class ParentPage {
         }
     }
 
+
     public String getTitle() {
         return driver.getTitle();
     }

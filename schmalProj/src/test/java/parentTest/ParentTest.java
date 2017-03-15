@@ -1,5 +1,6 @@
 package parentTest;
 //parent Test is used for inheritance of child classes to avoid code duplication
+import Pages.HomePage;
 import Pages.LoginPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
@@ -36,6 +37,7 @@ public class ParentTest {
     private String browser;
 
     protected LoginPage loginPage;
+    protected HomePage homePage;  //13.03.2017
 
     public ParentTest(String browser){
         this.browser = browser;
@@ -97,8 +99,9 @@ public class ParentTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        //06.03.2017
-        loginPage = new LoginPage(driver);
+
+        loginPage = new LoginPage(driver);  //06.03.2017
+        homePage = new HomePage(driver);    //13.03.2017
         //
     }
 

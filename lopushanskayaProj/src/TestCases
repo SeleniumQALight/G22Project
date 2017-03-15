@@ -9,7 +9,7 @@ Test Case 1: Login form_positive test
 Precondition: Start page of browser is opened, internet connection is set up.
 Steps:
     1. Open link 'http://v3.test.itpmgroup.com/login'
-    2. Fill in "student" in email form.
+    2. Fill in "Student" in email form.
     3. Fill in "909090" in password form.
     4. Click "Вход" button.
 Expected Result: Main page is opened
@@ -31,10 +31,13 @@ Test Case 3: Party Transactions_Creation with empty fields_negative test
 Precondition: Start page of browser is opened, internet connection is set up.
 Steps:
     1. Open link 'http://v3.test.itpmgroup.com/login'
-    2. Click on "Словари" area -> Select "Стороны сделок" .
-    3. Click "Add"(+) button.
-    4. In newly opened window leave all fields empty and click "Создать"
-Expected Result: Validation message is displayed : "Заполните это поле". Any new Party Transaction with empty fields is not saved.
+    2. Fill in "Student" in email form.
+    3. Fill in "909090" in password form.
+    4. Click "Вход" button.
+    5. Click on "Словари" area -> Select "Стороны сделок" .
+    6. Click "Add"(+) button.
+    7. In newly opened window leave all fields empty and click "Создать"
+Expected Result: Any new Party Transaction with empty fields is not saved.
 Post Condition: Click "Студент" -> "Выход". Close the browser.
 
 ________________
@@ -43,9 +46,12 @@ Test Case 4: Deals_Add and Delete_positive test
 Precondition: Start page of browser is opened, internet connection is set up.
 Steps:
     1. Open link 'http://v3.test.itpmgroup.com/login'
-    2. Click on "Сделки" tab.
-    3. Click "Add"(+) button.
-    4. In newly opened window input:
+    2. Fill in "Student" in email form.
+    3. Fill in "909090" in password form.
+    4. Click "Вход" button.
+    5. Click on "Сделки" tab.
+    6. Click "Add"(+) button.
+    7. In newly opened window input:
         "Deal date" section includes 5 drop-downs, select following in each:
             Day - 08
             Month - "марта"
@@ -55,9 +61,9 @@ Steps:
         "Тип сделки" - 'обмен'
         "Покупатель" - 'ОАО "МММ"'
         "Поставщик" - 'ЧП "Рога и Копыта"'
-    5. Click "Создать". New row is added to the list.
-    6. Click on newly added row.
-    7. Click "Удалить".
+    8. Click "Создать". New row is added to the list.
+    9. Click on newly added row.
+    10. Click "Удалить".
 Expected Result: The row is deleted from the list of Deals.
 Post Condition: Click "Студент" -> "Выход". Close the browser.
 

@@ -23,20 +23,10 @@ public class LoginTest extends ParentTest {
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 
-//    @Test
-//    public void unvalidLogon(){
-//        loginPage.open("http://v3.test.itpmgroup.com/");
-//        loginPage.checkTitle("Account of spare:Авторизация");
-//        loginPage.enterLogin("studend");
-//        loginPage.enterPass("909090");
-//        loginPage.clickButtonLogin();
-//        loginPage.checkTitle("Account of spare:Авторизация");
-//        checkAC("Title not expected", loginPage.getTitle(), "Account of spare:Авторизация");
-//
-//    }
+
     @Test
     public void unvalidLogon(){
-        loginPage.loginUser("Studentd", "909090");
+        loginPage.loginUser("Studexcvntd", "909090");
         checkAC("Title not expected", loginPage.getTitle(), "Account of spare:Авторизация");
 
     }

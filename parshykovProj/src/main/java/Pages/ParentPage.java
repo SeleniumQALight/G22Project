@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class ParentPage {
-    WebDriver driver;
+    private WebDriver driver;
     Logger logger;
     ActionsWithOurElements actionsWithOurElements;
 
@@ -20,7 +20,7 @@ public class ParentPage {
         this.driver = driver;
         logger = logger.getLogger(getClass());
         actionsWithOurElements = new ActionsWithOurElements(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     /**
@@ -52,5 +52,9 @@ public class ParentPage {
 
     public String getTitle() {
         return driver.getTitle();
+    }
+
+    public void checkTitleH1PresentOnPageWithText(String expectedText) {
+        actionsWithOurElements.checkTextInElement("*//H1", expectedText);
     }
 }

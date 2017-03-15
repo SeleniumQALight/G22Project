@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends ParentPage {
 
     @FindBy(name = "_username")
-    WebElement loginInput;
+    private WebElement loginInput;
 
     @FindBy(id = "password")
     WebElement passInput;
@@ -42,6 +42,8 @@ public class LoginPage extends ParentPage {
     public void enterPass(String pass) {
         actionsWithOurElements.enterText(".//*[@id='password']", pass);
     }
+
+
 
     public void clickButtonLogin() {
         actionsWithOurElements.clickOnElement(buttonLogin);

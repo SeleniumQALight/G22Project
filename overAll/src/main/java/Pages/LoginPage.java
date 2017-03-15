@@ -30,6 +30,7 @@ public class LoginPage extends ParentPage {
 
     public void enterLogin(String login) {
         try {
+
             loginInput.clear();
             loginInput.sendKeys(login);
             logger.info(login + " was entered in input ");

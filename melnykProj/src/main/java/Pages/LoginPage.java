@@ -1,48 +1,58 @@
 package Pages;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends ParentPage {
 
+    @FindBy(name = "_username")
+    WebElement loginInput;
+
+    @FindBy(id = "password")
+    WebElement passInput;
+
+    @FindBy(xpath = ".//button")
+    WebElement buttonLogin;
 
     public LoginPage(WebDriver driver) {
         super(driver);
+
     }
 
-    /*public void enterLogin (String login) {
+    public void openLoginPage(){
+        open("http://v3.test.itpmgroup.com");
+    }
+
+    public void enterLogin(String login) {
         try {
-            driver.findElement(By.name("_username")).clear();
-            driver.findElement(By.name("_username")).sendKeys(login);
-            logger.info(login + " was entered in input");
+            loginInput.clear();
+            loginInput.sendKeys(login);
+            logger.info(login + " was entered in input ");
         } catch (Exception e) {
             logger.error("Cannot work with input login");
             Assert.fail("Cannot work with input login");
         }
-    }*/
-    public void enterLogin(String login) {
-        actionsWithOurElements.enterText(".//input[@name='_username']", login);
     }
 
     public void enterPass(String pass) {
-        actionsWithOurElements.enterText(".//*[@id='password']", pass);
+
+        actionsWithOurElement.enterText(passInput, pass);
     }
 
-    public void clickOnButtonLogin() {
-        actionsWithOurElements.clickOnButtonLogin(".//button");
+    public void clickButtonLogin() {
+        actionsWithOurElement.clickOnElement(buttonLogin);
     }
 
 
-    public boolean isAvatarPresent() {
-        return actionsWithOurElements.isElementPresent(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
-    }
-
-    public boolean isForFailedTest () {
-        return actionsWithOurElements.isElementPresent(".//*/b[contains(text(),'Учет запчастей')]");
+    public void loginUser(String login, String pass){
+        openLoginPage();
+        checkTitle("Account of spare:Авторизация");
+        enterLogin(login);
+        enterPass(pass);
+        clickButtonLogin();
 
     }
 }
-
-
-
-

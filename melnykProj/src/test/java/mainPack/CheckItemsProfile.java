@@ -2,7 +2,6 @@ package mainPack;
 
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 public class CheckItemsProfile extends ParentTest {

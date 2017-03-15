@@ -97,7 +97,7 @@ public class ParentTest {
                 + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //10 sec = max time of step execution
 
 
         loginPage = new LoginPage(driver);  //06.03.2017

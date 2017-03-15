@@ -7,14 +7,14 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckItemsProfilePage extends ParentPage {
 
-    @FindBy(name = "_username")
+   /* @FindBy(name = "_username")
     WebElement loginInput;
 
     @FindBy(id = "password")
     WebElement passInput;
 
     @FindBy(xpath = ".//button")
-    WebElement buttonLogin;
+    WebElement buttonLogin; */
 
     public CheckItemsProfilePage (WebDriver driver) {
         super(driver);
@@ -51,9 +51,6 @@ public class CheckItemsProfilePage extends ParentPage {
         actionsWithOurElement.isElementPresent(".//button[@name='delete']");
 
     }
-
-
-
 
 
 }

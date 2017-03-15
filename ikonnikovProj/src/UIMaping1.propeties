@@ -11,7 +11,7 @@ Select.Button.Add.Apparat=xpath(".//div[@class='box-footer']//button[@class='btn
 Select.Field.ApparatNumber=xpath(".//input[@id='apparat_apparatNumber']")
 Select.Field.ApparatComment=xpath(".//input[@id='apparat_apparatComment']")
 Select.Button.Creation=xpath(".//button[@name='add']")
-Select.Section.Workers=xpath(".//a[@href='/dictionary/workers']")
+Select.Section.workers=xpath(".//a[@href='/dictionary/workers']")
 Select.Button.Add=xpath(".//div[@class='box-tools']/a[@class='btn btn-info btn-sm']")
 Select.Section.WorkersSurname=xpath(".//input[@id='workers_workerSurname']")
 Select.Section.WorkersName=xpath(".//input[@id='workers_workerName']")

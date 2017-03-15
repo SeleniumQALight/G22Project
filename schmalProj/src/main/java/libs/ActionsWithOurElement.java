@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.hamcrest.Matchers.is;   //manually written
 
 /**
  * Created on 06.03.2017.
@@ -14,12 +15,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ActionsWithOurElement {
     private WebDriver driver;
     private Logger logger;
-    private WebDriverWait webDriverWait15 = new WebDriverWait(driver, 15); //15.03.2017
-    private WebDriverWait webDriverWait20 = new WebDriverWait(driver, 20); //15.03.2017
+    private WebDriverWait webDriverWait15;  //15.03.2017
+    private WebDriverWait webDriverWait20; //15.03.2017
 
     public ActionsWithOurElement(WebDriver driver){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
+        webDriverWait15 = new WebDriverWait(driver, 15); //
+        webDriverWait20 = new WebDriverWait(driver, 20); //
     }
 
 
@@ -67,6 +70,17 @@ public class ActionsWithOurElement {
             return element.isDisplayed() && element.isEnabled(); //verify if element is displayed and if it is present
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public void checkTextInElement(String locator, String expectedText) {
+        try {
+            String textFromElement = driver.findElement(By.xpath(locator)).getText();
+            Assert.assertThat("Text in element does not match", textFromElement, is(expectedText));
+        }
+        catch (Exception e){
+            logger.error("The element cannot be found");
+            Assert.fail("The element cannot be found");
         }
     }
 }

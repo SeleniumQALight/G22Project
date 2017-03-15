@@ -2,6 +2,7 @@ package parentTest;
 //parent Test is used for inheritance of child classes to avoid code duplication
 import Pages.HomePage;
 import Pages.LoginPage;
+import Pages.WorkersPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -38,6 +39,7 @@ public class ParentTest {
 
     protected LoginPage loginPage;
     protected HomePage homePage;  //13.03.2017
+    protected WorkersPage workersPage; //15.03.2017
 
     public ParentTest(String browser){
         this.browser = browser;
@@ -59,7 +61,7 @@ public class ParentTest {
     @Rule
     public TestName testName = new TestName();
 
-    @Before
+    @Before   //executed BEFORE each @Test annotation
     public void SetUp() {
         File file = new File("");
 
@@ -102,6 +104,7 @@ public class ParentTest {
 
         loginPage = new LoginPage(driver);  //06.03.2017
         homePage = new HomePage(driver);    //13.03.2017
+        workersPage = new WorkersPage(driver);  //15.03.2017
         //
     }
 

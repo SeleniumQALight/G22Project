@@ -1,5 +1,7 @@
 package parentTest;
 
+import Pages.HomePage;
+import Pages.LoginPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -33,6 +35,9 @@ public class ParentTest {
 
     private String pathToScreenShot;
     private String browser;
+
+    protected LoginPage loginPage;
+    protected HomePage homePage;
 
 
     public ParentTest(String browser) {
@@ -93,8 +98,10 @@ public class ParentTest {
                 + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
 
     }
 

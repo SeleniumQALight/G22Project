@@ -19,5 +19,11 @@ public class CreateWorker extends ParentTest {
         homePage.clickworkersSubMenu();
         workersPage.checkTitle("Учет запчастей");
         workersPage.checkTitleH1PresentOnPageWithPage("Сотрудники Список");
+        workersPage.clickButtonPlus();
+        workersPage.checkTitleH1PresentOnPageDictionary("Словарь");
+        workersPage.creationWorker("Melnik","Konstantin","Sergeevitch","06777777777");
+        workersPage.clickButtonCreate();
+        checkAC("Worker was not created", workersPage.createdWorker(), true);
+
     }
 }

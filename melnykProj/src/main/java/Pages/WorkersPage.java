@@ -24,8 +24,12 @@ public class WorkersPage extends ParentPage {
     @FindBy(xpath = ".//button[@name='add']")
     WebElement buttonCreate;
 
-    @FindBy(xpath = ".//*[contains(text(),'Melnik Konstantin Sergeevitch')]")
+    @FindBy(xpath = ".//*[text()='Melnik Konstantin Sergeevitch']")
     WebElement newWorker;
+
+    @FindBy(xpath = ".//*[text()='06777777777']")
+    WebElement newWorkerPhone;
+
 
 
     public WorkersPage(WebDriver driver) {
@@ -94,6 +98,7 @@ public class WorkersPage extends ParentPage {
 
 
     public Boolean createdWorker() {
-      return actionsWithOurElement.isElementPresent(newWorker);
+      return
+              actionsWithOurElement.isElementPresent(newWorker) && actionsWithOurElement.isElementPresent(newWorkerPhone);
     }
 }

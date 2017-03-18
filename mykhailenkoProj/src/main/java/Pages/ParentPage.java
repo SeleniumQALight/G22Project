@@ -18,7 +18,7 @@ public class ParentPage {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     /**
@@ -45,12 +45,11 @@ public class ParentPage {
         }
     }
 
-
     public String getTitle() {
         return driver.getTitle();
     }
 
-    public void checkTitleH1PresentOnPageWithPage(String expectedText) {
-        actionsWithOurElement.checkTextInElement(".//H1", expectedText);
+    public void checkTitleH1PresentOnPageWithText(String expectedText){
+        actionsWithOurElement.checkTextInElement (".//H1", expectedText);
     }
 }

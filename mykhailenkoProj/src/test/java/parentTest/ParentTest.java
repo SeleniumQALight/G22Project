@@ -41,9 +41,9 @@ public class ParentTest {
     protected HomePage homePage;
     protected WorkersPage workersPage;
 
-
     public ParentTest(String browser) {
         this.browser = browser;
+
     }
 
     @Parameterized.Parameters
@@ -100,11 +100,12 @@ public class ParentTest {
                 + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         workersPage = new WorkersPage(driver);
+
 
     }
 

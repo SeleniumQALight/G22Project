@@ -18,7 +18,7 @@ public class LoginPage extends ParentPage {
     @FindBy(id = "password")
     WebElement passInput;   // = ".//*[@id='password']"
 
-    @FindBy(xpath = ".//*button")
+    @FindBy(xpath = ".//button")
     WebElement clickButton;     // = ".//*button"
 
 

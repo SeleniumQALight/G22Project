@@ -45,12 +45,12 @@ public class ParentPage {
         }
     }
 
-
     public String getTitle() {
         return driver.getTitle();
     }
 
-    public void checkTitleH1PresentOnPageWithPage(String expectedText) {
-        actionsWithOurElement.checkTextInElement(".//H1", expectedText);
+    public void checkTitleH1PresentOnPageWithText(String expectedText) {
+        actionsWithOurElement.checkTextInElement(".//H1",expectedText);
+
     }
 }

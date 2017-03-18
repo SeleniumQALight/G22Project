@@ -1,4 +1,5 @@
-package mytest;
+package mainPack;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,14 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 
-
-/**
- * Created by user on 28.02.2017.
- */
-public class LoginPositivTestWithoutPageobjectYakovenko {
+public class LoginPositiveTestWithOutPageObject {
     WebDriver webDriver;
+
     @Test
-    public void loginpositivTestWithoutPageobject(){
+    public void loginPositiveTestWithOutPageObject(){
         webDriver =new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -32,10 +30,5 @@ public class LoginPositivTestWithoutPageobjectYakovenko {
                 .isDisplayed());
 
         webDriver.quit();
-
-
     }
-
-
-
 }

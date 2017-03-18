@@ -12,11 +12,8 @@ public class CheckItemsProfile extends ParentTest {
     @Test
     public void ckeckitemsProfileOnValid (){
 
-        checkItemsProfilePage.open("http://v3.test.itpmgroup.com/");
-        checkItemsProfilePage.checkTitle("Account of spare:Авторизация");
-        checkItemsProfilePage.enterLogin("Student");
-        checkItemsProfilePage.enterPass("909090");
-        checkItemsProfilePage.clickOnButtonLogin();
+        loginPage.loginUser("Student", "909090");
+        homePage.isAvatarPresent();
         checkItemsProfilePage.clickAvatar();
         checkItemsProfilePage.clickProfile();
 

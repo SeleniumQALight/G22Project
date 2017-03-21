@@ -36,26 +36,26 @@ public class ActionsWithOurElements {
         }
     }
 
-//    public void clickOnElement(String xpathLocator) {
-//        try{
-//            driver.findElement(By.xpath(xpathLocator)).click();
-//            logger.info("Element was clicked");
-//
-//        }catch (Exception e){
-//            logger.error("Can not work with input login");
-//            Assert.fail("Can not work with input login");
-//        }
-//
-//    }
+    public void clickOnElement(String xpathLocator) {
+        try{
+            driver.findElement(By.xpath(xpathLocator)).click();
+            logger.info("Element was clicked");
 
-//    public boolean isElementPresent(String xpathLocator) {
-//        try {
-//            WebElement webElement = driver.findElement(By.xpath(xpathLocator));
-//            return webElement.isDisplayed() && webElement.isEnabled();
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
+        }catch (Exception e){
+            logger.error("Can not work with input login");
+            Assert.fail("Can not work with input login");
+        }
+
+    }
+
+    public boolean isElementPresent(String xpathLocator) {
+        try {
+            WebElement webElement = driver.findElement(By.xpath(xpathLocator));
+            return webElement.isDisplayed() && webElement.isEnabled();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public void clickOnElement(WebElement element) {
         try{
@@ -88,5 +88,17 @@ public class ActionsWithOurElements {
         Assert.fail("Can not work with element");
     }
     }
+
+    public String getTextFromElement(String xpathLocator) {
+        String textFromElement = "";
+        try {
+            textFromElement = webDriverWait15.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+        return textFromElement;
+    }
+
 }
 

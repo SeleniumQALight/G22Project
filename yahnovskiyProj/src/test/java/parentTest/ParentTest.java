@@ -1,5 +1,6 @@
 package parentTest;
 
+import Pages.EditWorkerPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.WorkersPage;
@@ -40,7 +41,7 @@ public class ParentTest {
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected WorkersPage workersPage;
-
+    protected EditWorkerPage editWorkerPage;
 
     public ParentTest(String browser) {
         this.browser = browser;
@@ -105,7 +106,7 @@ public class ParentTest {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         workersPage = new WorkersPage(driver);
-
+        editWorkerPage = new EditWorkerPage(driver);
     }
 
     @After

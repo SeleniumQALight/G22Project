@@ -24,7 +24,9 @@ public class HomePage extends ParentPage{
        actionsWithOurElements.clickOnElement(menuDictionary);
     }
 
-    public void clickWorkersMenu() {
+    public void clickWorkersSubMenu() {
         actionsWithOurElements.clickOnElement(workersMenu);
     }
+
+
 }

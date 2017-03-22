@@ -48,6 +48,11 @@ Assert.assertThat("Title not match", driver.getTitle(),
     }
 
     public String getTitle() {
+
         return driver.getTitle();
+    }
+
+    public void checkTitleH1PresentOnPageWithText(String expectedText) {
+    actionsWithOurElements.checkTextInElement(".//H1", expectedText);
     }
 }

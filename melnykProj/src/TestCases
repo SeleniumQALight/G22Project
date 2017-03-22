@@ -11,9 +11,9 @@ Test case # KM-2
 Summary - Authorization of current user
 Description:
 1. Open web-site http://v3.test.itpmgroup.com/login
-2. Put the invalid data in fields Email and Password (Email - W222, Password - fdsjkfdsl)
+2. Put the invalid data in fields Email and Password (Email - student, Password - 909090)
 3. Push the button Войти
-Expected result - The login form does not disappear. Present title Учет запчастей.
+Expected result - The login form does not disappear. Present title "Account of spare:Авторизация".
 
 
 Test case # KM-3

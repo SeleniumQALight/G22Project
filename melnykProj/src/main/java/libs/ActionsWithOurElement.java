@@ -15,6 +15,7 @@ public class ActionsWithOurElement {
     private Logger logger;
     private WebDriverWait webDriverWait15;
     private WebDriverWait webDriverWait20;
+
     public ActionsWithOurElement(WebDriver driver) {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
@@ -22,7 +23,7 @@ public class ActionsWithOurElement {
         webDriverWait20 = new WebDriverWait(driver, 20);
     }
 
-   public void enterText(String xpathLocator, String text) {
+  public void enterText(String xpathLocator, String text) {
         try {
             driver.findElement(By.xpath(xpathLocator)).clear();
             driver.findElement(By.xpath(xpathLocator)).sendKeys(text);
@@ -34,7 +35,7 @@ public class ActionsWithOurElement {
         }
     }
 
-    public void enterText(WebElement element, String text){
+    public void enterText(WebElement element, String text) {
         try {
             webDriverWait15.until(ExpectedConditions.visibilityOf(element));
             element.clear();
@@ -47,10 +48,10 @@ public class ActionsWithOurElement {
         }
     }
 
-   public void clickOnElement(String xpathLocator) {
+ public void clickOnElement(String xpathLocator) {
         try {
             driver.findElement(By.xpath(xpathLocator)).click();
-            logger.info("Element was clecked");
+            logger.info("Element was clicked");
 
         } catch (Exception e) {
             logger.error("Can not work with button");
@@ -60,9 +61,11 @@ public class ActionsWithOurElement {
 
     /**
      * Method checked is element present on page
+     *
      * @param xpathLocator
      * @return
      */
+
    public boolean isElementPresent(String xpathLocator) {
         try {
             WebElement webElement = driver.findElement(By.xpath(xpathLocator));
@@ -75,7 +78,7 @@ public class ActionsWithOurElement {
     public void clickOnElement(WebElement element) {
         try {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
-          //  webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+            //  webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked");
 
@@ -114,11 +117,21 @@ public class ActionsWithOurElement {
 
     public void checkTextInElement(String locator, String expectedText) {
         try {
-           String textFromElement = driver.findElement(By.xpath(locator)).getText();
-           Assert.assertThat("Text in element not match", textFromElement, is(expectedText));
+            String textFromElement = driver.findElement(By.xpath(locator)).getText();
+            Assert.assertThat("Text in element not match", textFromElement, is(expectedText));
         } catch (Exception e) {
             logger.error("Cannot found element");
             Assert.fail("Cannot found element");
         }
+    }
+    public String getTextFromElement(String xpathLocator) {
+        String textFromElement = "";
+        try {
+            textFromElement = webDriverWait15.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+        return textFromElement;
     }
 }

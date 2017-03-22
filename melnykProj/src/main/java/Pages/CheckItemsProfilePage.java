@@ -6,49 +6,51 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckItemsProfilePage extends ParentPage {
-
-   /* @FindBy(name = "_username")
-    WebElement loginInput;
-
-    @FindBy(id = "password")
-    WebElement passInput;
-
-    @FindBy(xpath = ".//button")
-    WebElement buttonLogin; */
+@FindBy(xpath = ".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']")
+WebElement avatar;
+@FindBy(xpath = ".//a[@href='/users/profile/13']")
+WebElement profile;
+    @FindBy(xpath = ".//*//h3[@class='box-title' and text()='Профиль пользователя Студент']")
+    WebElement textProfilrUserStudent;
+    @FindBy(xpath = ".//*[@id='userProfileEdit_user_email']")
+    WebElement editUserEmail;
+    @FindBy(xpath = ".//*[@id='userProfileEdit_user_name']")
+    WebElement editUserName;
+    @FindBy(xpath = ".//*[@id='userProfileEdit_user_username']")
+    WebElement editUserUsername;
+    @FindBy(xpath = ".//*[@id='userProfileEdit_user_password_password']")
+    WebElement editUserPassword;
+    @FindBy(xpath = ".//*[@id='userProfileEdit_user_password_password_confirm']")
+    WebElement editUserPasswordConfirm;
+    @FindBy(xpath = ".//button[@name='save']")
+    WebElement buttonSave;
+    @FindBy(xpath = ".//button[@name='delete']")
+    WebElement buttonDelete;
 
     public CheckItemsProfilePage (WebDriver driver) {
         super(driver);
     }
 
-    public void enterLogin (String login) {actionsWithOurElement.enterText(".//input[@name='_username']", login);
-    }
-    public void enterPass (String pass) {
-        actionsWithOurElement.enterText(".//*[@id='password']", pass);
-    }
-    public void clickOnButtonLogin () {
-        actionsWithOurElement.clickOnElement (".//button");
-    }
-
 
     public void clickAvatar () {
-        actionsWithOurElement.clickAvatar(".//a[@class='dropdown-toggle' and @href='#']//*[@class='user-image']");
+        actionsWithOurElement.clickOnElement(avatar);
 
     }
     public void clickProfile () {
-        actionsWithOurElement.clickProfile(".//a[@href='/users/profile/13']");
+        actionsWithOurElement.clickOnElement(profile);
 
     }
 
     public Boolean isProfileItemsPresent () {
         return
-        actionsWithOurElement.isElementPresent(".//*//h3[@class='box-title' and text()='Профиль пользователя Студент']")&&
-        actionsWithOurElement.isElementPresent(".//*[@id='userProfileEdit_user_email']")&&
-        actionsWithOurElement.isElementPresent(".//*[@id='userProfileEdit_user_name']")&&
-        actionsWithOurElement.isElementPresent(".//*[@id='userProfileEdit_user_username']")&&
-        actionsWithOurElement.isElementPresent(".//*[@id='userProfileEdit_user_password_password']")&&
-        actionsWithOurElement.isElementPresent(".//*[@id='userProfileEdit_user_password_password_confirm']")&&
-        actionsWithOurElement.isElementPresent(".//button[@name='save']")&&
-        actionsWithOurElement.isElementPresent(".//button[@name='delete']");
+        actionsWithOurElement.isElementPresent(textProfilrUserStudent)&&
+        actionsWithOurElement.isElementPresent(editUserEmail)&&
+        actionsWithOurElement.isElementPresent(editUserName)&&
+        actionsWithOurElement.isElementPresent(editUserUsername)&&
+        actionsWithOurElement.isElementPresent(editUserPassword)&&
+        actionsWithOurElement.isElementPresent(editUserPasswordConfirm)&&
+        actionsWithOurElement.isElementPresent(buttonSave)&&
+        actionsWithOurElement.isElementPresent(buttonDelete);
 
     }
 

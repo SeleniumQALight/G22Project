@@ -124,5 +124,14 @@ public class ActionsWithOurElement {
             Assert.fail("Cannot found element");
         }
     }
-
+    public String getTextFromElement(String xpathLocator) {
+        String textFromElement = "";
+        try {
+            textFromElement = webDriverWait15.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+        return textFromElement;
+    }
 }

@@ -1,5 +1,9 @@
 package parentTest;
 
+import Pages.EditWorkerPage;
+import Pages.HomePage;
+import Pages.LoginPage;
+import Pages.WorkersPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -17,6 +21,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -34,13 +39,18 @@ public class ParentTest {
     private String pathToScreenShot;
     private String browser;
 
+    protected LoginPage loginPage;
+    protected HomePage homePage;
+    protected WorkersPage workersPage;
+    protected EditWorkerPage editWorkerPage;
 
     public ParentTest(String browser) {
         this.browser = browser;
+
     }
 
     @Parameterized.Parameters
-    public static Collection testData() {
+    public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
 //                {"fireFox"}
 //                ,
@@ -67,7 +77,7 @@ public class ParentTest {
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");
-            File fileFF = new File(".././drivers/chromedriver_win32-7_18/chromedriver.exe");
+            File fileFF = new File(".././drivers/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Chrome is started");
@@ -94,6 +104,12 @@ public class ParentTest {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        workersPage = new WorkersPage(driver);
+        editWorkerPage = new EditWorkerPage(driver);
+
 
 
     }

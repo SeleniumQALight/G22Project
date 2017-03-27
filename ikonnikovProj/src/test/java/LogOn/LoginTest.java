@@ -1,31 +1,29 @@
 package LogOn;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
-/**
- * Created by Администратор on 01.03.17.
- */
 public class LoginTest extends ParentTest {
     public LoginTest(String browser) {
         super(browser);
     }
+
     @Test
-    public void validLogin(){
-        driver.get("http://v3.test.itpmgroup.com");
+    public void validLogOn(){
+        loginPage.openLoginPage();
+        loginPage.checkTitle("Account of spare:Авторизация");
+        loginPage.enterLogin("Student");
+        loginPage.enterPass("909090");
+        loginPage.clickButtonLogin();
+        homePage.checkTitle("Учет запчастей");
+        checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
+    }
 
-        driver.findElement(By.name("_username")).clear();
-        driver.findElement(By.name("_username")).sendKeys("Student");
-
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("909090");
-
-        driver.findElement(By.tagName("button")).click();
-        checkAC("Avatar not present", driver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed(), true);
-
-
-
+    @Test
+    public void unvalidLogOn(){
+       loginPage.loginUser("studend","909090");
+        checkAC("Title not expected", loginPage.getTitle()
+                ,"Account of spare:Авторизация");
 
     }
 }

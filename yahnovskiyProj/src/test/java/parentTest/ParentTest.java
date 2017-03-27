@@ -1,5 +1,9 @@
 package parentTest;
 
+import Pages.EditWorkerPage;
+import Pages.HomePage;
+import Pages.LoginPage;
+import Pages.WorkersPage;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -34,6 +38,10 @@ public class ParentTest {
     private String pathToScreenShot;
     private String browser;
 
+    protected LoginPage loginPage;
+    protected HomePage homePage;
+    protected WorkersPage workersPage;
+    protected EditWorkerPage editWorkerPage;
 
     public ParentTest(String browser) {
         this.browser = browser;
@@ -92,10 +100,13 @@ public class ParentTest {
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
                 + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        workersPage = new WorkersPage(driver);
+        editWorkerPage = new EditWorkerPage(driver);
     }
 
     @After

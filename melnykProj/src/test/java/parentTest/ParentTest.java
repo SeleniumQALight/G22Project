@@ -1,5 +1,6 @@
 package parentTest;
 
+import Pages.*;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -27,16 +28,22 @@ import static org.hamcrest.Matchers.is;
 public class ParentTest {
     protected WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
-    private Utils utils = new Utils(); // for screen shot
+    private Utils utils = new Utils();
 
-    private boolean isTestPass = false; // exit screen shot before needed
+    private boolean isTestPass = false;
 
-    private String pathToScreenShot; // path ot sceenshot
-    private String browser; // manage browsers - @Parameterized.Parameters
+    private String pathToScreenShot;
+    private String browser;
 
+    protected LoginPage loginPage;
+    protected HomePage homePage;
+    protected CheckItemsProfilePage checkItemsProfilePage;
+    protected WorkersPage workersPage;
+    protected EditWorkerPage editWorkerPage;
 
     public ParentTest(String browser) {
         this.browser = browser;
+
     }
 
     @Parameterized.Parameters
@@ -95,11 +102,16 @@ public class ParentTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        checkItemsProfilePage = new CheckItemsProfilePage(driver);
+        workersPage = new WorkersPage(driver);
+        editWorkerPage = new EditWorkerPage(driver);
+
 
     }
 
     @After
-   // no needed screen shot
     public void tearDown() {
         if (!(driver == null)) {
             if (!isTestPass) {
@@ -109,7 +121,7 @@ public class ParentTest {
         }
     }
 
-// acceptance criteria Assert
+
     public void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {
             utils.screenShot(pathToScreenShot, driver);
@@ -127,7 +139,7 @@ public class ParentTest {
         Assert.assertThat(message + "Browser - " + browser + " ScreenShot " + pathToScreenShot, actual, is(expected));
         setTestPass();
     }
-//setter
+
     private void setTestPass() {
         isTestPass = true;
     }

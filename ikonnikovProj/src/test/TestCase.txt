@@ -1,0 +1,82 @@
+==== TestCases= ==
+
+Test Case #1: Login in website
+1)Pre-condition
+Open browser
+
+2) Test Case Description
+2.1. Open link  http://v3.test.itpmgroup.com/login
+2.2. Enter "Student" in email field
+2.3. Enter "909090" in password field
+2.4. Click "Вход" button.
+2.5. Checking existence avatar "Студент"
+Expected Result: avatar "Студент" exists
+
+3)Post Conditions
+Click "Студент -> Выход" button. Close the browser
+======================================================
+
+Test Case #2: Create new record in "Словари -> Аппарат" section
+
+1)Pre-condition
+Open browser
+Open link  http://v3.test.itpmgroup.com/login
+To authorize
+
+2) Test Case Description
+2.1 Select "Словари -> Аппарат" section
+2.2 Creating a new record with the data:
+    Apparat number: 5555
+    Apparat comment: to observe time
+2.3 Checking  new record 'to observe time'
+Expected Result: Record is created
+
+3)Post Conditions
+Delete recording and log off. Close the browser.
+=======================================================
+
+Test Case #3: Create new employee in "Словари -> Сотрудники" section
+
+1)Pre-condition
+Open browser
+Open link  http://v3.test.itpmgroup.com/login
+To authorize
+
+2) Test Case Description
+2.1 Select "Словари -> Сотрудники" section
+2.2 Creating a new record with the data:
+    Worker surname:  Alexandrov
+    Worker name: Alex
+    Worker middle name: Alexsander
+    Worker phone: 1234567890
+2.3 Checking new record 'Alexandrov Alex Alexsander'
+Expected Result:  Record is created
+
+3)Post Conditions
+Delete recording and log off. Close the browser.
+===================================================
+
+Test Case #4: Create new recird  in "Установка" section
+
+1)Pre-condition
+Open browser
+Open link  http://v3.test.itpmgroup.com/login
+To authorize
+
+2) Test Case Description
+2.1 Select "Установка" section
+2.2 Creating a new record with the data:
+    Installation date: 05 июля  2015 07 08
+    Аппарат: to observe time
+    Сотрудник: Alexandrov Alex Alexsander
+
+2.3 Checking new record 'to observe time'
+Expected Result:  Record is created
+
+3)Post Conditions
+Delete recording and log off. Close the browser.
+===================================================
+
+
+
+

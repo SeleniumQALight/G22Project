@@ -20,6 +20,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +29,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(value = Parameterized.class)
 public class ParentTest {
-    protected WebDriver driver;
+    private WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
 
@@ -47,7 +48,7 @@ public class ParentTest {
     }
 
     @Parameterized.Parameters
-    public static Collection testData() {
+    public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
 //                {"fireFox"}
 //                ,

@@ -24,14 +24,14 @@ public class TestExel_Test {
 	@Test
 	public void test6() throws Exception {
 
-		Map dataTestList1 = excelDriver.getData(getCfgValue("DATA_FILE"), "validLogOn");
+		Map dataTestList1 = excelDriver.getData(getCfgValue("DATA_FILE"), "List1");
 
 		log.info("TestData :" + dataTestList1);
 		 
 		
-		Map<String,String> dataStatic = excelDriver.getData(getCfgValue("DATA_FILE"), "validLogOn");
+		Map<String,String> dataStatic = excelDriver.getData(getCfgValue("DATA_FILE"), "List1");
 		
-		log.info("testStaticData " + dataStatic.get("login"));
+		log.info("testStaticData " + dataStatic.get("KursItem2"));
 
 	}
 

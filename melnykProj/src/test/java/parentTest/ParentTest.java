@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -47,7 +48,7 @@ public class ParentTest {
     }
 
     @Parameterized.Parameters
-    public static Collection testData() {
+    public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
 //                {"fireFox"}
 //                ,

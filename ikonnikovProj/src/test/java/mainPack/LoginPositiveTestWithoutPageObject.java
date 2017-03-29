@@ -1,26 +1,23 @@
 package mainPack;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginPositiveTestWithoutPageObject {
+
+class LoginPositiveTestWithOutPageObject {
     WebDriver webDriver;
 
     @Test
-    public void loginPositiveTestWithoutPageObject() {
-//        webDriver = new FirefoxDriver();
-        webDriver = new ChromeDriver();
+    public void loginPositiveTestWithOutPageObject(){
+        webDriver =new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-        webDriver.get("http://v3.test.itpmgroup.com");
+        webDriver.get("http://v3.test.itpmgroup.com/login");
 
         webDriver.findElement(By.name("_username")).clear();
         webDriver.findElement(By.name("_username")).sendKeys("Student");
@@ -29,25 +26,9 @@ public class LoginPositiveTestWithoutPageObject {
         webDriver.findElement(By.id("password")).sendKeys("909090");
 
         webDriver.findElement(By.tagName("button")).click();
-        Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))
+                .isDisplayed());
 
         webDriver.quit();
-
-
     }
 }

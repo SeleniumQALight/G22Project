@@ -155,7 +155,7 @@ public class ActionsWithOurElement {
         try {
             Select optionsFromDD = new Select(dropDownElement);
             optionsFromDD.selectByValue(valueForSelection);
-            logger.info(valueForSelection + " text was selected in DropDown");
+            logger.info(valueForSelection + " value was selected in DropDown");
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");

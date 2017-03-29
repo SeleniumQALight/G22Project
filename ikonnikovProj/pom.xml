@@ -53,6 +53,11 @@
     <artifactId>poi</artifactId>
     <version>3.14</version>
     </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>RELEASE</version>
+      </dependency>
 
 
   </dependencies>

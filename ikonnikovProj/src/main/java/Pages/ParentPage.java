@@ -3,11 +3,12 @@ package Pages;
 
 import libs.ActionsWithOurElement;
 import org.apache.log4j.Logger;
+
+import org.apache.xerces.impl.xs.identity.Selector;
+import static org.hamcrest.Matchers.is;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import static org.hamcrest.Matchers.is;
 
 public class ParentPage {
     WebDriver driver;

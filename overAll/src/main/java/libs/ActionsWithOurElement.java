@@ -6,10 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.Matchers.is;
-
 
 public class ActionsWithOurElement {
     private WebDriver driver;
@@ -80,8 +80,7 @@ public class ActionsWithOurElement {
     public void clickOnElement(WebElement element) {
         try {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
-            webDriverWait20.until(ExpectedConditions.not(
-                    ExpectedConditions.invisibilityOf(element)));
+            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clecked");
 
@@ -102,8 +101,7 @@ public class ActionsWithOurElement {
     public void checkTextInElement(String locator, String expectedText) {
         try {
             String textFromElement = driver.findElement(By.xpath(locator)).getText();
-            Assert.assertThat("Text in element not matched", textFromElement
-                    , is(expectedText));
+            Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");
@@ -113,8 +111,7 @@ public class ActionsWithOurElement {
     public void checkTextInElement(WebElement element, String expectedText) {
         try {
             String textFromElement = element.getText();
-            Assert.assertThat("Text in element not matched", textFromElement
-                    , is(expectedText));
+            Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");
@@ -124,13 +121,44 @@ public class ActionsWithOurElement {
     public String getTextFromElement(String xpathLocator) {
         String textFromElement = "";
         try {
-            textFromElement = webDriverWait15.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
+            textFromElement = webDriverWait15
+                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");
         }
         return textFromElement;
     }
+
+    /**
+     * Method selected TEXT in dropDown
+     * @param dropDownElement
+     * @param textForSelection
+     */
+    public void selectTextInDropDown(WebElement dropDownElement, String textForSelection) {
+        try {
+            Select optionsFromDD = new Select(dropDownElement);
+            optionsFromDD.selectByVisibleText(textForSelection);
+            logger.info(textForSelection + " text was selected in DropDown");
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+    }
+
+    /**
+     * Method selected Value in dropDown 
+     * @param dropDownElement
+     * @param valueForSelection
+     */
+    public void selectValueInDropDown(WebElement dropDownElement, String valueForSelection) {
+        try {
+            Select optionsFromDD = new Select(dropDownElement);
+            optionsFromDD.selectByValue(valueForSelection);
+            logger.info(valueForSelection + " value was selected in DropDown");
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+    }
 }
-
-

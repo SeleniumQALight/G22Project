@@ -19,6 +19,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -58,11 +60,13 @@ public class ParentTest {
         return Arrays.asList(new Object[][]{
 //                {"fireFox"}
 //                ,
-                {"chrome"}
+//                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,
 //                    { "opera" }
+//                ,
+                {"phantomJs"}
         });
     }
 
@@ -101,6 +105,17 @@ public class ParentTest {
             System.setProperty("webdriver.chrome.driver", fileOpera.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Opera is started");
+        } else if ("phantomJs".equals(browser)){
+            log.info("PHANTOMJS will be started");
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setJavascriptEnabled(true);
+            caps.setCapability("takesScreenshot", true);
+            caps.setCapability(
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                    ".././drivers/phantomjs-2.1.1-windows/bin/phantomjs.exe"
+            );
+            driver = new PhantomJSDriver(caps);
+            log.info(" PHANTOMJS is started");
         }
 
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()

@@ -56,6 +56,12 @@
       <artifactId>poi</artifactId>
       <version>3.14</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>phantomjsdriver</artifactId>
+      <version>1.4.1</version>
+    </dependency>
   </dependencies>
   <build>
   <resources>

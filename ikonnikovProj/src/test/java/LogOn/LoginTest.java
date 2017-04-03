@@ -15,7 +15,8 @@ public class LoginTest extends ParentTest {
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
         loginPage.clickButtonLogin();
-        homePage.checkTitle("Учет запчастей");
+//        homePage.checkTitle("Учет запчастей");
+        homePage.checkTitle("Account of spare:Авторизация");
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 

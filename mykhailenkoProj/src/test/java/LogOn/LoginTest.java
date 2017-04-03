@@ -24,7 +24,7 @@ public class LoginTest extends ParentTest {
 
     @Test
     public void unvalidLogOn(){
-        loginPage.LogInUser("student","909090");
+        loginPage.logInUser("student","909090");
         checkAC("Title not expected", loginPage.getTitle(),"Account of spare:Авторизация");
     }
 }

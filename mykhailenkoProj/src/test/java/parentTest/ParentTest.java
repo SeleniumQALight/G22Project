@@ -1,8 +1,6 @@
 package parentTest;
 
-import Pages.HomePage;
-import Pages.LoginPage;
-import Pages.WorkersPage;
+import Pages.*;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -40,6 +38,9 @@ public class ParentTest {
     protected LoginPage loginPage;
     protected HomePage homePage;
     protected WorkersPage workersPage;
+    protected EditWorkerPage editWorkerPage;
+    protected SparesPage sparesPage;
+    protected EditSparePage editSparePage;
 
     public ParentTest(String browser) {
         this.browser = browser;

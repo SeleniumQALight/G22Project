@@ -77,7 +77,7 @@ public class TestExel_Test {
         */
         @Test
         public void invalidLogOnWithDataFromExcel() {
-            loginPage.openLogInPage();
+            loginPage.openLoginPage();
             loginPage.enterLogin(login);
             loginPage.enterPass(pass);
             loginPage.clickButtonLogin();

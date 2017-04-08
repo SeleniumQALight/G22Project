@@ -1,5 +1,6 @@
 package logOn;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -28,10 +29,11 @@ public class LoginTest extends ParentTest {
     }
 
     @Test
+    @Ignore
     public void unvalidLogOn() {
         loginPage.loginUser("student", "909090");
         checkAC("Title is not expected", loginPage.getTitle()
-                , "Account of spare:Авторизация");
+               , "Account of spare:Авторизация");
 
     }
 }

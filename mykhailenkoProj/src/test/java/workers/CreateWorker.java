@@ -13,7 +13,7 @@ public class CreateWorker extends ParentTest {
 
     @Test
     public void createWorker(){
-        loginPage.LogInUser("Student", "909090");
+        loginPage.logInUser("Student", "909090");
         homePage.checkTitle("Учет запчастей");
         homePage.clickMenuDictionary();
         homePage.clickWorkersSubMenu();

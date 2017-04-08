@@ -46,7 +46,7 @@ public class LoginPage extends ParentPage {
         actionsWithOurElement.clickOnElement(buttonLogin);
     }
 
-    public void LogInUser (String login, String password){
+    public void logInUser (String login, String password){
         openLogInPage();
         checkTitle("Account of spare:Авторизация");
         enterLogin(login);

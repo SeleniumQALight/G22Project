@@ -34,7 +34,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(value = Parameterized.class)
 public class ParentTest {
-    protected WebDriver driver;
+    private WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
 
@@ -60,13 +60,13 @@ public class ParentTest {
         return Arrays.asList(new Object[][]{
  //              {"fireFox"}
 //                ,
-//                {"chrome"}
+                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,
 //                    { "opera" }
 //                ,
-                {"phantomJs"}
+//                {"phantomJs"}
         });
     }
 
@@ -145,7 +145,7 @@ public class ParentTest {
     }
 
 
-    public void checkAC(String message, String actual, String expected) {
+    protected void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {
             utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);
@@ -154,7 +154,7 @@ public class ParentTest {
         setTestPass();
     }
 
-    public void checkAC(String message, Boolean actual, Boolean expected) {
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
         if (!(actual == expected)) {
             utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);

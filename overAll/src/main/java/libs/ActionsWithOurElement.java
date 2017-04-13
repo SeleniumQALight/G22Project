@@ -82,7 +82,7 @@ public class ActionsWithOurElement {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
             webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
-            logger.info("Element was clecked");
+            logger.info("Element was clicked " + element);
 
         } catch (Exception e) {
             logger.error("Can not work with button");
@@ -100,6 +100,7 @@ public class ActionsWithOurElement {
 
     public void checkTextInElement(String locator, String expectedText) {
         try {
+//            Thread.sleep(3000);
             String textFromElement = driver.findElement(By.xpath(locator)).getText();
             Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
         } catch (Exception e) {
@@ -123,6 +124,7 @@ public class ActionsWithOurElement {
         try {
             textFromElement = webDriverWait15
                     .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
+//            textFromElement =  driver.findElement(By.xpath(xpathLocator)).getText();
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");

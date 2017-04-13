@@ -52,6 +52,11 @@ public class ParentPage {
     }
 
     public void checkTitleH1PresentOnPageWithText(String expectedText) {
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         actionsWithOurElement.checkTextInElement(".//H1",expectedText);
     }
 }

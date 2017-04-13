@@ -19,6 +19,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -32,7 +34,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(value = Parameterized.class)
 public class ParentTest {
-    protected WebDriver driver;
+    private WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
 
@@ -63,6 +65,8 @@ public class ParentTest {
 //                { "iedriver" }
 //                ,
 //                    { "opera" }
+//                ,
+//                {"phantomJs"}
         });
     }
 
@@ -101,6 +105,17 @@ public class ParentTest {
             System.setProperty("webdriver.chrome.driver", fileOpera.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Opera is started");
+        } else if ("phantomJs".equals(browser)){
+            log.info("PHANTOMJS will be started");
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setJavascriptEnabled(true);
+            caps.setCapability("takesScreenshot", true);
+            caps.setCapability(
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                    ".././drivers/phantomjs-2.1.1-windows/bin/phantomjs.exe"
+            );
+            driver = new PhantomJSDriver(caps);
+            log.info(" PHANTOMJS is started");
         }
 
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
@@ -130,7 +145,7 @@ public class ParentTest {
     }
 
 
-    public void checkAC(String message, String actual, String expected) {
+    protected void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {
             utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);
@@ -139,7 +154,7 @@ public class ParentTest {
         setTestPass();
     }
 
-    public void checkAC(String message, Boolean actual, Boolean expected) {
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
         if (!(actual == expected)) {
             utils.screenShot(pathToScreenShot, driver);
             log.error("AC failed: " + message);

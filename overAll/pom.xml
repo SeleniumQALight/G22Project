@@ -46,6 +46,13 @@
       <artifactId>mockito-all</artifactId>
       <version>1.9.5</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -80,6 +87,14 @@
         <configuration>
           <parallel>classes</parallel>
           <threadCount>3</threadCount>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

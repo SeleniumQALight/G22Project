@@ -1,8 +1,11 @@
 package logOn;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import parentTest.ParentTest;
+import categories.SlowTests;
 
+@Category(SlowTests.class)
 public class LoginTest extends ParentTest {
     public LoginTest(String browser) {
         super(browser);

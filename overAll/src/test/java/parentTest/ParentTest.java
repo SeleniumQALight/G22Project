@@ -23,6 +23,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import unitTests.MyCustomRule;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +73,9 @@ public class ParentTest {
 
     @Rule
     public TestName testName = new TestName();
+    
+    @Rule
+    public MyCustomRule myCustomRule = new MyCustomRule();
 
     @Before
     public void SetUp() {

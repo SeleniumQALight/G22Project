@@ -3,32 +3,31 @@ package mainPack;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static libs.Singletone.chromeDriver;
+
 
 public class LoginPositiveTestWithOutPageObject {
-    WebDriver webDriver;
 
     @Test
     public void loginPositiveTestWithOutPageObject(){
-        webDriver =new ChromeDriver();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        webDriver.get("http://v3.test.itpmgroup.com/login");
-
-        webDriver.findElement(By.name("_username")).clear();
-        webDriver.findElement(By.name("_username")).sendKeys("Student");
-
-        webDriver.findElement(By.id("password")).clear();
-        webDriver.findElement(By.id("password")).sendKeys("909090");
-
-        webDriver.findElement(By.tagName("button")).click();
-        Assert.assertTrue(webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))
+    
+        chromeDriver.manage().window().maximize();
+        chromeDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        chromeDriver.get("http://v3.test.itpmgroup.com/login");
+    
+        chromeDriver.findElement(By.name("_username")).clear();
+        chromeDriver.findElement(By.name("_username")).sendKeys("Student");
+    
+        chromeDriver.findElement(By.id("password")).clear();
+        chromeDriver.findElement(By.id("password")).sendKeys("909090");
+    
+        chromeDriver.findElement(By.tagName("button")).click();
+        Assert.assertTrue(chromeDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']"))
                 .isDisplayed());
-
-        webDriver.quit();
+    
+        chromeDriver.quit();
     }
 }

@@ -14,7 +14,7 @@ public class LoginTest extends ParentTest {
     @Test
     public void validLogOn(){
         loginPage.openLoginPage();
-        loginPage.checkTitle("Account of spare:Авторизация")
+        loginPage.checkTitle("Account of spare:Авторизация");
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
         loginPage.clickButtonLogin();

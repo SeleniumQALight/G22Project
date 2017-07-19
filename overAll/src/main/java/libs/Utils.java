@@ -31,5 +31,17 @@ public class Utils {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Hard wait
+     * @param second
+     */
+    public static void waitABit(int second){
+        try {
+            Thread.sleep(second);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

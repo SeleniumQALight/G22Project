@@ -4,7 +4,6 @@ package Pages;
 import libs.ActionsWithOurElement;
 import org.apache.log4j.Logger;
 
-import org.apache.xerces.impl.xs.identity.Selector;
 import static org.hamcrest.Matchers.is;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -52,11 +51,6 @@ public class ParentPage {
     }
 
     public void checkTitleH1PresentOnPageWithText(String expectedText) {
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         actionsWithOurElement.checkTextInElement(".//H1",expectedText);
     }
 }

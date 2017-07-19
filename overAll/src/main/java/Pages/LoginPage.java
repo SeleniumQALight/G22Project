@@ -11,13 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends ParentPage {
 
     @FindBy(name = "_username")
-    WebElement loginInput;
+    private WebElement loginInput;
 
     @FindBy(id = "password")
-    WebElement passInput;
+    private WebElement passInput;
 
     @FindBy(xpath = ".//button")
-    WebElement buttonLogin;
+    private WebElement buttonLogin;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -26,14 +26,12 @@ public class LoginPage extends ParentPage {
 
     public void openLoginPage(){
         open("http://v3.test.itpmgroup.com");
+        checkTitle("Account of spare:Авторизация");
     }
 
     public void enterLogin(String login) {
         try {
-
-            loginInput.clear();
-            loginInput.sendKeys(login);
-            logger.info(login + " was entered in input ");
+            actionsWithOurElement.enterText(loginInput, login);
         } catch (Exception e) {
             logger.error("Cannot work with input login");
             Assert.fail("Cannot work with input login");

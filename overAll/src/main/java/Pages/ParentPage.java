@@ -2,6 +2,8 @@ package Pages;
 
 
 import libs.ActionsWithOurElement;
+import libs.ConfigProperties;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 
 import static org.hamcrest.Matchers.is;
@@ -13,6 +15,7 @@ public class ParentPage {
     WebDriver driver;
     Logger logger;
     ActionsWithOurElement actionsWithOurElement;
+    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     public ParentPage(WebDriver driver){
         this.driver = driver;

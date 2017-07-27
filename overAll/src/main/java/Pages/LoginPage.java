@@ -25,7 +25,7 @@ public class LoginPage extends ParentPage {
     }
 
     public void openLoginPage(){
-        open("http://v3.test.itpmgroup.com");
+        open(configProperties.base_url());
         checkTitle("Account of spare:Авторизация");
     }
 

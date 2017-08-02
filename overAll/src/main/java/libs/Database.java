@@ -24,14 +24,14 @@ public class Database {
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
         url=getCfgValue(db);
-        
+        log.info(url);
         // Load driver for JDBC class
         Class.forName(getCfgValue(driver));
                 
         // Create a connection to the database
         String user_name=getCfgValue((db + "_USER"));
         String user_pass=getCfgValue((db + "_PASSWORD"));
-        log.info(" user - " + user_name + " pass " + user_pass);
+        log.info(" user " + user_name + " pass " + user_pass);
         connection= DriverManager.getConnection(url,user_name,user_pass);
         
     }

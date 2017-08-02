@@ -29,14 +29,17 @@ public class TestDataBase_Test {
 
 	@Test
 	public void Teas1() throws SQLException, ClassNotFoundException, IOException {
-
+//		dBMySQL.changeTable("CREATE TABLE seleniumTable (idNumber int,login varchar(255), passWord varchar(255))"
+//				 );
+		
+		dBMySQL.changeTable("INSERT INTO seleniumTable VALUES (2,'test','pass')");
 		List<Map<String, String>> testMySQLValue
-				= dBMySQL.selectTable("select * from table_selenium ");
+				= dBMySQL.selectTable("select * from seleniumTable ");
 		log.info("value -- " + testMySQLValue);
 //		Assert.assertTrue(testMySQLValue.get(1).get("login").equals("G22"));
 //		log.info(dBMySQL.changeTable("insert into table_selenium ( id, login, pass) values (711,'G22','test') "));
 
-		log.info(utilsForDB.getPassForLogin("G22"));
+//		log.info(utilsForDB.getPassForLogin("G22"));
 	}
 
 	@After

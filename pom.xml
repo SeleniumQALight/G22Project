@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <modules>
+    <module>jBehaveProject</module>
     <module>overAll</module>
     <module>schmalProj</module>
     <module>parshykovProj</module>

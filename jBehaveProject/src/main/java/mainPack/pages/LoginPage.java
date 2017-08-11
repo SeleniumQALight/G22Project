@@ -1,45 +1,41 @@
 package mainPack.pages;
 
-import ch.lambdaj.function.convert.Converter;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.List;
-
-import static ch.lambdaj.Lambda.convert;
+import static org.hamcrest.Matchers.is;
 
 @DefaultUrl("http://v3.qalight.com.ua/login")
-public class LoginPage extends PageObject {
+public class LoginPage extends PageForV3 {
 
-    @FindBy(name="search")
-    private WebElementFacade searchTerms;
+    @FindBy(name = "_username")
+    private WebElementFacade loginInput;
 
-    @FindBy(name="go")
-    private WebElementFacade lookupButton;
+    @FindBy(name = "_password")
+    private WebElementFacade passwordInput;
 
-    public void enter_keywords(String keyword) {
-        searchTerms.type(keyword);
+    @FindBy(xpath = ".//button[@type='submit']")
+    private WebElementFacade submitButton;
+
+    @FindBy(xpath = ".//*[@class='login-box-body']")
+    private WebElementFacade loginForm;
+
+    public void enter_login(String login) {
+        loginInput.type(login);
     }
 
-    public void lookup_terms() {
-        lookupButton.click();
+    public void enter_pasword(String passWord) {
+        passwordInput.type(passWord);
     }
 
-    public List<String> getDefinitions() {
-        WebElementFacade definitionList = find(By.tagName("ol"));
-        List<WebElement> results = definitionList.findElements(By.tagName("li"));
-        return convert(results, toStrings());
+    public void clickOnButtonEnter() {
+        submitButton.click();
     }
 
-    private Converter<WebElement, String> toStrings() {
-        return new Converter<WebElement, String>() {
-            public String convert(WebElement from) {
-                return from.getText();
-            }
-        };
+    public void loginFormPresent() {
+        assertThat(iselementPresent(loginForm), is(true));
     }
+
 }

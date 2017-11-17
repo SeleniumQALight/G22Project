@@ -18,7 +18,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -63,7 +63,7 @@ public class ParentTest {
     @Parameterized.Parameters
     public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
- //              {"fireFox"}
+               {"fireFox"}
 ////                ,
 //                {"chrome"}
 //                ,
@@ -73,7 +73,7 @@ public class ParentTest {
 //                ,
 //                {"phantomJs"}
 //                ,
-                {"remote"}
+//                {"remote"}
         });
     }
 
@@ -91,9 +91,11 @@ public class ParentTest {
             log.info("FireFox will be started");
             File fileFF = new File(".././drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
-            FirefoxProfile profile = new FirefoxProfile();
-            profile.setPreference("browser.startup.page", 0); // Empty start page
-            profile.setPreference("browser.startup.homepage_override.mstone", "ignore"); // Suppress the "What's new" page
+            FirefoxOptions profile = new FirefoxOptions();
+            profile.addPreference("browser.startup.page", 0); // Empty start page
+            profile.addPreference("browser.startup.homepage_override.mstone", "ignore"); // Suppress the "What's new" page
+            System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
+            System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
             driver = new FirefoxDriver(profile);
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {

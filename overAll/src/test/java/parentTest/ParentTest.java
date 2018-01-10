@@ -65,7 +65,7 @@ public class ParentTest {
         return Arrays.asList(new Object[][]{
  //              {"fireFox"}
 ////                ,
-//                {"chrome"}
+                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,
@@ -73,7 +73,7 @@ public class ParentTest {
 //                ,
 //                {"phantomJs"}
 //                ,
-                {"remote"}
+//                {"remote"}
         });
     }
 
@@ -94,7 +94,7 @@ public class ParentTest {
             FirefoxProfile profile = new FirefoxProfile();
             profile.setPreference("browser.startup.page", 0); // Empty start page
             profile.setPreference("browser.startup.homepage_override.mstone", "ignore"); // Suppress the "What's new" page
-            driver = new FirefoxDriver(profile);
+//            driver = new FirefoxDriver(profile);
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");

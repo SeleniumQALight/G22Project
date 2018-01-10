@@ -1,12 +1,10 @@
 package Pages;
 
-
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+
+import static libs.ActionsWithOurElement.enterText;
 
 public class LoginPage extends ParentPage {
 
@@ -20,27 +18,20 @@ public class LoginPage extends ParentPage {
     private WebElement buttonLogin;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
-
+        super(driver,"Account of spare:Авторизация");
     }
 
     public void openLoginPage(){
         open(configProperties.base_url());
-        checkTitle("Account of spare:Авторизация");
+        checkTitle();
     }
 
     public void enterLogin(String login) {
-        try {
-            actionsWithOurElement.enterText(loginInput, login);
-        } catch (Exception e) {
-            logger.error("Cannot work with input login");
-            Assert.fail("Cannot work with input login");
-        }
+        enterText(loginInput, login);
     }
 
     public void enterPass(String pass) {
-
-        actionsWithOurElement.enterText(passInput, pass);
+        enterText(passInput, pass);
     }
 
     public void clickButtonLogin() {
@@ -50,7 +41,7 @@ public class LoginPage extends ParentPage {
 
     public void loginUser(String login, String pass){
         openLoginPage();
-        checkTitle("Account of spare:Авторизация");
+        checkTitle();
         enterLogin(login);
         enterPass(pass);
         clickButtonLogin();

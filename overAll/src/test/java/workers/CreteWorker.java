@@ -18,10 +18,10 @@ public class CreteWorker extends ParentTest {
     @Test
     public void creteWorker() {
         loginPage.loginUser("Student", "909090");
-        homePage.checkTitle("Учет запчастей");
+        homePage.checkTitle();
         homePage.clickMenuDictionary();
         homePage.clickWorkersSubMenu();
-        workersPage.checkTitle("Учет запчастей");
+        workersPage.checkTitle();
         workersPage.checkTitleH1PresentOnPageWithText("Сотрудники Список");
         workersPage.clickButtonPlus();
         editWorkerPage.checkTitleH1PresentOnPageWithText("Словарь");

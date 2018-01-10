@@ -19,7 +19,7 @@ public class EditWorkerPage extends ParentPage {
     private WebElement buttonDelete;
 
     public EditWorkerPage(WebDriver driver) {
-        super(driver);
+        super(driver,"");
     }
 
     public void enterTextInToWorkerSurnameInput(String text) {

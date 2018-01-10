@@ -11,17 +11,19 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class ParentPage {
+public abstract class ParentPage {
     WebDriver driver;
     Logger logger;
+    String expectedTitle;
     ActionsWithOurElement actionsWithOurElement;
     ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
-    public ParentPage(WebDriver driver){
+    public ParentPage(WebDriver driver, String expectedTitle){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
         PageFactory.initElements(driver,this);
+        this.expectedTitle = expectedTitle;
     }
 
     /**
@@ -38,7 +40,7 @@ public class ParentPage {
         }
     }
 
-    public void checkTitle(String expectedTitle){
+    public void checkTitle(){
         try {
             Assert.assertThat("Title not match", driver.getTitle(),
                     is(expectedTitle));
@@ -56,4 +58,10 @@ public class ParentPage {
     public void checkTitleH1PresentOnPageWithText(String expectedText) {
         actionsWithOurElement.checkTextInElement(".//H1",expectedText);
     }
+
+    public String getExpectedTitle() {
+        return expectedTitle;
+    }
+
+
 }

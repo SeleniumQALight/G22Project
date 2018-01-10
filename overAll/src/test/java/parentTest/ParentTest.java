@@ -65,7 +65,7 @@ public class ParentTest {
         return Arrays.asList(new Object[][]{
  //              {"fireFox"}
 ////                ,
-//                {"chrome"}
+                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,
@@ -73,7 +73,7 @@ public class ParentTest {
 //                ,
 //                {"phantomJs"}
 //                ,
-                {"remote"}
+//                {"remote"}
         });
     }
 
@@ -85,8 +85,48 @@ public class ParentTest {
 
     @Before
     public void SetUp() {
-        File file = new File("");
+        getPathToScreen();
+        getDriver();
+        driverSetUp();
+        pageInit();
+    }
 
+    @After
+    public void tearDown() {
+        if (!(driver == null)) {
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenShot, driver);
+            }
+            driver.quit();
+        }
+    }
+
+    /**
+     * Maximaze window and set ImplicitlyWait
+     */
+    private void driverSetUp() {
+        //        driver.manage().window().setPosition(new Point(0, 0));
+//        driver.manage().window().setSize(new Dimension(1900, 1080));
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    private void getPathToScreen() {
+        File file = new File("");
+        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
+                + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
+    }
+
+    private void pageInit() {
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        workersPage = new WorkersPage(driver);
+        editWorkerPage = new EditWorkerPage(driver);
+        sparesPage = new SparesPage(driver);
+        editSparePage = new EditSparePage(driver);
+    }
+
+    private void getDriver() {
         if ("fireFox".equals(browser)) {
             log.info("FireFox will be started");
             File fileFF = new File(".././drivers/geckodriver.exe");
@@ -94,7 +134,7 @@ public class ParentTest {
             FirefoxProfile profile = new FirefoxProfile();
             profile.setPreference("browser.startup.page", 0); // Empty start page
             profile.setPreference("browser.startup.homepage_override.mstone", "ignore"); // Suppress the "What's new" page
-            driver = new FirefoxDriver(profile);
+//            driver = new FirefoxDriver(profile);
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");
@@ -138,32 +178,6 @@ public class ParentTest {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-        }
-
-        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName()
-                + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
-//        driver.manage().window().setPosition(new Point(0, 0));
-//        driver.manage().window().setSize(new Dimension(1900, 1080));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        workersPage = new WorkersPage(driver);
-        editWorkerPage = new EditWorkerPage(driver);
-        sparesPage = new SparesPage(driver);
-        editSparePage = new EditSparePage(driver);
-
-
-    }
-
-    @After
-    public void tearDown() {
-        if (!(driver == null)) {
-            if (!isTestPass) {
-                utils.screenShot(pathToScreenShot, driver);
-            }
-            driver.quit();
         }
     }
 

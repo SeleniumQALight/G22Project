@@ -17,7 +17,7 @@ public class EditSparePage extends ParentPage{
 	private WebElement buttonDelete;
 	
 	public EditSparePage(WebDriver driver) {
-		super(driver);
+		super(driver,"Учет запчастей","/dictionary/spares/edit");
 	}
 	
 	public void enterTextInToSpareNameInput(String spareName){

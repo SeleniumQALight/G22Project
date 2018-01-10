@@ -18,18 +18,20 @@ public class CreteWorker extends ParentTest {
     @Test
     public void creteWorker() {
         loginPage.loginUser("Student", "909090");
-        homePage.checkTitle("Учет запчастей");
+        homePage.checkIfThisPageIsOpened();
         homePage.clickMenuDictionary();
         homePage.clickWorkersSubMenu();
-        workersPage.checkTitle("Учет запчастей");
+        workersPage.checkIfThisPageIsOpened();
         workersPage.checkTitleH1PresentOnPageWithText("Сотрудники Список");
         workersPage.clickButtonPlus();
+        editWorkerPage.checkIfThisPageIsOpened();
         editWorkerPage.checkTitleH1PresentOnPageWithText("Словарь");
         editWorkerPage.enterTextInToWorkerSurnameInput(WORKER_SURNAME);
         editWorkerPage.enterTextInToWorkerNameInput(WORKER_NAME);
         editWorkerPage.enterTextInToWorkerMiddleNameInput(WORKER_MIDDLE_NAME);
         editWorkerPage.enterTextInToWorkerPhoneInput(WORKER_PHONE);
         editWorkerPage.clickButonCreate();
+        workersPage.checkIfThisPageIsOpened();
         workersPage.checkTitleH1PresentOnPageWithText("Сотрудники Список");
         checkAC("Can not find element with text: " + FULL_WORKER_NAME,
                 workersPage.isWorkerInList(FULL_WORKER_NAME), true);

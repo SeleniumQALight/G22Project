@@ -18,12 +18,13 @@ public class LoginPage extends ParentPage {
     private WebElement buttonLogin;
 
     public LoginPage(WebDriver driver) {
-        super(driver,"Account of spare:Авторизация");
+        super(driver,"Account of spare:Авторизация", "/login");
     }
 
     public void openLoginPage(){
         open(configProperties.base_url());
         checkTitle();
+        checkCurrentUrl();
     }
 
     public void enterLogin(String login) {
@@ -41,7 +42,7 @@ public class LoginPage extends ParentPage {
 
     public void loginUser(String login, String pass){
         openLoginPage();
-        checkTitle();
+        checkIfThisPageIsOpened();
         enterLogin(login);
         enterPass(pass);
         clickButtonLogin();

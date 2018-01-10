@@ -16,7 +16,7 @@ public class HomePage extends ParentPage {
     private WebElement sparesSubMenu;
 
     public HomePage(WebDriver driver) {
-        super(driver,"Учет запчастей");
+        super(driver,"Учет запчастей","/");
     }
 
     public boolean isAvatarPresent() {

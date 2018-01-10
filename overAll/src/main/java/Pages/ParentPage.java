@@ -15,15 +15,19 @@ public abstract class ParentPage {
     WebDriver driver;
     Logger logger;
     String expectedTitle;
+    String expectedUrl;
+    String baseUrl;
     ActionsWithOurElement actionsWithOurElement;
     ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
-    public ParentPage(WebDriver driver, String expectedTitle){
+    public ParentPage(WebDriver driver, String expectedTitle, String expectedUrl){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
         PageFactory.initElements(driver,this);
+        baseUrl = configProperties.base_url();
         this.expectedTitle = expectedTitle;
+        this.expectedUrl = baseUrl + expectedUrl;
     }
 
     /**
@@ -40,6 +44,15 @@ public abstract class ParentPage {
         }
     }
 
+    public void checkCurrentUrl(){
+        try {
+            Assert.assertEquals("Url is not expected", driver.getCurrentUrl(), expectedUrl);
+        }catch (Exception e){
+            logger.error("Can not get url ");
+            Assert.fail("Can not get url ");
+        }
+    }
+
     public void checkTitle(){
         try {
             Assert.assertThat("Title not match", driver.getTitle(),
@@ -50,6 +63,10 @@ public abstract class ParentPage {
         }
     }
 
+    public void checkIfThisPageIsOpened(){
+        checkTitle();
+        checkCurrentUrl();
+    }
 
     public String getTitle() {
         return driver.getTitle();
@@ -63,5 +80,8 @@ public abstract class ParentPage {
         return expectedTitle;
     }
 
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
 
 }

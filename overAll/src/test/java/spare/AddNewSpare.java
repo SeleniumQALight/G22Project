@@ -13,15 +13,18 @@ public class AddNewSpare extends ParentTest{
 	@Test
 	public void addNewSpare(){
 		loginPage.loginUser("Student", "909090");
-		homePage.checkTitle();
+		homePage.checkIfThisPageIsOpened();
 		homePage.clickMenuDictionary();
 		homePage.clickSparesSubMenu();
+		sparesPage.checkIfThisPageIsOpened();
 		sparesPage.checkTitleH1PresentOnPageWithText("Запчасти Список");
 		sparesPage.clickOnPlusButton();
+		editSparePage.checkIfThisPageIsOpened();
 		editSparePage.checkTitleH1PresentOnPageWithText("Словарь");
 		editSparePage.enterTextInToSpareNameInput(TEST_SPARE);
 		editSparePage.selectTextInDropDownTypeOfSpare("Датчики");
 		editSparePage.clickButtonCreate();
+		sparesPage.checkIfThisPageIsOpened();
 		sparesPage.checkTitleH1PresentOnPageWithText("Запчасти Список");
 		checkAC("Can not find spare in list ", sparesPage.isSpareInList(TEST_SPARE), true);
 		sparesPage.clickOnSpare(TEST_SPARE);

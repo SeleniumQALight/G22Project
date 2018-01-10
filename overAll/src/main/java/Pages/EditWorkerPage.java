@@ -19,7 +19,7 @@ public class EditWorkerPage extends ParentPage {
     private WebElement buttonDelete;
 
     public EditWorkerPage(WebDriver driver) {
-        super(driver,"");
+        super(driver,"Учет запчастей","/dictionary/workers/edit");
     }
 
     public void enterTextInToWorkerSurnameInput(String text) {

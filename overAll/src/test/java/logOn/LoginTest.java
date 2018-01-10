@@ -14,11 +14,11 @@ public class LoginTest extends ParentTest {
     @Test
     public void validLogOn(){
         loginPage.openLoginPage();
-        loginPage.checkTitle();
+        loginPage.checkIfThisPageIsOpened();
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
         loginPage.clickButtonLogin();
-        homePage.checkTitle();
+        homePage.checkIfThisPageIsOpened();
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 

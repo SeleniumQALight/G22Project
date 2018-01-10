@@ -11,7 +11,7 @@ public class WorkersPage extends ParentPage{
 
 
     public WorkersPage(WebDriver driver) {
-        super(driver,"Учет запчастей");
+        super(driver,"Учет запчастей","/dictionary/workers");
     }
 
     public void clickButtonPlus() {

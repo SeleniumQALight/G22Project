@@ -9,7 +9,7 @@ public class SparesPage extends ParentPage {
     private WebElement buttonPlus;
 
     public SparesPage(WebDriver driver) {
-        super(driver,"");
+        super(driver,"Учет запчастей", "/dictionary/spares");
     }
 
     public void clickOnPlusButton() {

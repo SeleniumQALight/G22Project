@@ -6,7 +6,9 @@ import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.SparesPage;
 import Pages.WorkersPage;
+import libs.ConfigProperties;
 import libs.Utils;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
@@ -42,6 +44,7 @@ public class ParentTest {
     private WebDriver driver;
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
+    protected ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     private boolean isTestPass = false;
 
@@ -108,7 +111,7 @@ public class ParentTest {
         //        driver.manage().window().setPosition(new Point(0, 0));
 //        driver.manage().window().setSize(new Dimension(1900, 1080));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(configProperties.TIME_FOR_DFFAULT_WAIT(), TimeUnit.SECONDS);
     }
 
     private void getPathToScreen() {

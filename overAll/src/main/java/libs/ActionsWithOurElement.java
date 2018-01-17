@@ -1,5 +1,6 @@
 package libs;
 
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -16,12 +17,13 @@ public class ActionsWithOurElement {
     private static Logger logger;
     private static WebDriverWait webDriverWait15;
     private WebDriverWait webDriverWait20;
+    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     public ActionsWithOurElement(WebDriver driver) {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
-        webDriverWait15 = new WebDriverWait(driver, 15);
-        webDriverWait20 = new WebDriverWait(driver, 20);
+        webDriverWait15 = new WebDriverWait(driver, configProperties.TIME_FOR_EXPLICIT_WAIT_LOW());
+        webDriverWait20 = new WebDriverWait(driver, configProperties.TIME_FOR_EXPLICIT_WAIT_HIGHT());
     }
 
     public void enterText(String xpathLocator, String text) {
@@ -47,8 +49,7 @@ public class ActionsWithOurElement {
 
     public void clickOnElement(String xpathLocator) {
         try {
-            driver.findElement(By.xpath(xpathLocator)).click();
-            logger.info("Element was clecked");
+            clickOnElement(driver.findElement(By.xpath(xpathLocator)));
         } catch (Exception e) {
             printErrorAndStopTest();
         }

@@ -16,16 +16,17 @@ public abstract class ParentPage {
     Logger logger;
     String expectedTitle;
     String expectedUrl;
-    String baseUrl;
+
     ActionsWithOurElement actionsWithOurElement;
-    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    protected final static String baseUrl = configProperties.base_url();
 
     public ParentPage(WebDriver driver, String expectedTitle, String expectedUrl){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
         PageFactory.initElements(driver,this);
-        baseUrl = configProperties.base_url();
+
         this.expectedTitle = expectedTitle;
         this.expectedUrl = baseUrl + expectedUrl;
     }

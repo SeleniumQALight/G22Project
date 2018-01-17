@@ -49,8 +49,7 @@ public class ActionsWithOurElement {
 
     public void clickOnElement(String xpathLocator) {
         try {
-            driver.findElement(By.xpath(xpathLocator)).click();
-            logger.info("Element was clecked");
+            clickOnElement(driver.findElement(By.xpath(xpathLocator)));
         } catch (Exception e) {
             printErrorAndStopTest();
         }

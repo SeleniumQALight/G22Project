@@ -1,5 +1,6 @@
 package libs;
 
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,52 +14,44 @@ import static org.hamcrest.Matchers.is;
 
 public class ActionsWithOurElement {
     private WebDriver driver;
-    private Logger logger;
-    private WebDriverWait webDriverWait15;
+    private static Logger logger;
+    private static WebDriverWait webDriverWait15;
     private WebDriverWait webDriverWait20;
+    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     public ActionsWithOurElement(WebDriver driver) {
         this.driver = driver;
         logger = Logger.getLogger(getClass());
-        webDriverWait15 = new WebDriverWait(driver, 15);
-        webDriverWait20 = new WebDriverWait(driver, 20);
+        webDriverWait15 = new WebDriverWait(driver, configProperties.TIME_FOR_EXPLICIT_WAIT_LOW());
+        webDriverWait20 = new WebDriverWait(driver, configProperties.TIME_FOR_EXPLICIT_WAIT_HIGHT());
     }
 
     public void enterText(String xpathLocator, String text) {
         try {
-
             driver.findElement(By.xpath(xpathLocator)).clear();
             driver.findElement(By.xpath(xpathLocator)).sendKeys(text);
             logger.info(text + " was inputed");
-
         } catch (Exception e) {
-            logger.error("Can not work with input");
-            Assert.fail("Can not work with input");
+            printErrorAndStopTest();
         }
     }
 
-    public void enterText(WebElement element, String text) {
+    public static void enterText(WebElement element, String text) {
         try {
             webDriverWait15.until(ExpectedConditions.visibilityOf(element));
             element.clear();
             element.sendKeys(text);
-            logger.info(text + " was inputed");
-
+            logger.info(text + " was inputed into " + element);
         } catch (Exception e) {
-            logger.error("Can not work with input");
-            Assert.fail("Can not work with input");
+            printErrorAndStopTest();
         }
     }
 
     public void clickOnElement(String xpathLocator) {
         try {
-
-            driver.findElement(By.xpath(xpathLocator)).click();
-            logger.info("Element was clecked");
-
+            clickOnElement(driver.findElement(By.xpath(xpathLocator)));
         } catch (Exception e) {
-            logger.error("Can not work with button");
-            Assert.fail("Can not work with button");
+            printErrorAndStopTest();
         }
     }
 
@@ -80,20 +73,21 @@ public class ActionsWithOurElement {
     public void clickOnElement(WebElement element) {
         try {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
-            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+//            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked " + element);
-
         } catch (Exception e) {
-            logger.error("Can not work with button");
-            Assert.fail("Can not work with button");
+            printErrorAndStopTest();
         }
     }
 
     public boolean isElementPresent(WebElement element) {
         try {
-            return element.isDisplayed() && element.isEnabled();
+            boolean tempState = element.isDisplayed() && element.isEnabled();
+            logger.info("Element is Present : " + tempState);
+            return tempState;
         } catch (Exception e) {
+            logger.info("Element is Present : false");
             return false;
         }
     }
@@ -104,8 +98,7 @@ public class ActionsWithOurElement {
             String textFromElement = driver.findElement(By.xpath(locator)).getText();
             Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
         } catch (Exception e) {
-            logger.error("Can not work with element");
-            Assert.fail("Can not work with element");
+            printErrorAndStopTest();
         }
     }
 
@@ -114,8 +107,7 @@ public class ActionsWithOurElement {
             String textFromElement = element.getText();
             Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
         } catch (Exception e) {
-            logger.error("Can not work with element");
-            Assert.fail("Can not work with element");
+            printErrorAndStopTest();
         }
     }
 
@@ -126,8 +118,7 @@ public class ActionsWithOurElement {
                     .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLocator))).getText();
 //            textFromElement =  driver.findElement(By.xpath(xpathLocator)).getText();
         } catch (Exception e) {
-            logger.error("Can not work with element");
-            Assert.fail("Can not work with element");
+            printErrorAndStopTest();
         }
         return textFromElement;
     }
@@ -143,8 +134,7 @@ public class ActionsWithOurElement {
             optionsFromDD.selectByVisibleText(textForSelection);
             logger.info(textForSelection + " text was selected in DropDown");
         } catch (Exception e) {
-            logger.error("Can not work with element");
-            Assert.fail("Can not work with element");
+            printErrorAndStopTest();
         }
     }
 
@@ -159,8 +149,14 @@ public class ActionsWithOurElement {
             optionsFromDD.selectByValue(valueForSelection);
             logger.info(valueForSelection + " value was selected in DropDown");
         } catch (Exception e) {
-            logger.error("Can not work with element");
-            Assert.fail("Can not work with element");
+            printErrorAndStopTest();
         }
     }
+
+    private static void printErrorAndStopTest() {
+        logger.error("Can not work with element");
+        Assert.fail("Can not work with element");
+    }
+
+
 }

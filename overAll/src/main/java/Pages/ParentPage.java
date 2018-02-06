@@ -11,17 +11,24 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class ParentPage {
+public abstract class ParentPage {
     WebDriver driver;
     Logger logger;
-    ActionsWithOurElement actionsWithOurElement;
-    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    String expectedTitle;
+    String expectedUrl;
 
-    public ParentPage(WebDriver driver){
+    ActionsWithOurElement actionsWithOurElement;
+    static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    protected final static String baseUrl = configProperties.base_url();
+
+    public ParentPage(WebDriver driver, String expectedTitle, String expectedUrl){
         this.driver = driver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElement = new ActionsWithOurElement(driver);
         PageFactory.initElements(driver,this);
+
+        this.expectedTitle = expectedTitle;
+        this.expectedUrl = baseUrl + expectedUrl;
     }
 
     /**
@@ -38,7 +45,16 @@ public class ParentPage {
         }
     }
 
-    public void checkTitle(String expectedTitle){
+    public void checkCurrentUrl(){
+        try {
+            Assert.assertEquals("Url is not expected", driver.getCurrentUrl(), expectedUrl);
+        }catch (Exception e){
+            logger.error("Can not get url ");
+            Assert.fail("Can not get url ");
+        }
+    }
+
+    public void checkTitle(){
         try {
             Assert.assertThat("Title not match", driver.getTitle(),
                     is(expectedTitle));
@@ -48,6 +64,10 @@ public class ParentPage {
         }
     }
 
+    public void checkIfThisPageIsOpened(){
+        checkTitle();
+        checkCurrentUrl();
+    }
 
     public String getTitle() {
         return driver.getTitle();
@@ -56,4 +76,13 @@ public class ParentPage {
     public void checkTitleH1PresentOnPageWithText(String expectedText) {
         actionsWithOurElement.checkTextInElement(".//H1",expectedText);
     }
+
+    public String getExpectedTitle() {
+        return expectedTitle;
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
+
 }

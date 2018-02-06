@@ -14,11 +14,11 @@ public class LoginTest extends ParentTest {
     @Test
     public void validLogOn(){
         loginPage.openLoginPage();
-        loginPage.checkTitle("Account of spare:Авторизация");
+        loginPage.checkIfThisPageIsOpened();
         loginPage.enterLogin("Student");
         loginPage.enterPass("909090");
         loginPage.clickButtonLogin();
-        homePage.checkTitle("Учет запчастей");
+        homePage.checkIfThisPageIsOpened();
         checkAC("Avatar Not present ", homePage.isAvatarPresent(),true);
     }
 
@@ -26,7 +26,7 @@ public class LoginTest extends ParentTest {
     public void unvalidLogOn(){
        loginPage.loginUser("studend","909090");
         checkAC("Title not expected", loginPage.getTitle()
-                ,"Account of spare:Авторизация");
+                ,loginPage.getExpectedTitle());
 
     }
 }

@@ -75,7 +75,7 @@ public class ActionsWithOurElement {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
 //            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
-            logger.info("Element was clicked " + element);
+            logger.info("Element was clicked ");
         } catch (Exception e) {
             printErrorAndStopTest();
         }

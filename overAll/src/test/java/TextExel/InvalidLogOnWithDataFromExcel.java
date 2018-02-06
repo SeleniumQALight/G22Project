@@ -26,7 +26,7 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
         this.pass = pass;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Parameters are {0}, {1}, {2}")
     public static Collection testData() throws IOException {
         InputStream spreadsheet = new FileInputStream(ConfigData.getCfgValue("DATA_FILE_PATH") + "testDataSuit.xls");
         return new SpreadsheetData(spreadsheet, "InvalidLogOn").getData();      //2й параметр - указываем название листа в екселе

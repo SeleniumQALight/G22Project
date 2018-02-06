@@ -1,14 +1,12 @@
 package logOn;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-@RunWith(Parameterized.class)
+
 public class TestWithParametersFromCommandLine {
 
     // runner should have parameter in VM options -> -Dbrowsers=chrome,ff

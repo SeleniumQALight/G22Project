@@ -1,0 +1,5 @@
+
+clean test -Dtest=LoginTest allure:serve -Dmaven.test.failure.ignore=true
+
+# For rerun report
+https://docs.qameta.io/allure/

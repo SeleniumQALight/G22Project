@@ -1,5 +1,7 @@
 package Pages;
 
+import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,29 +20,33 @@ public class LoginPage extends ParentPage {
     private WebElement buttonLogin;
 
     public LoginPage(WebDriver driver) {
-        super(driver,"Account of spare:Авторизация", "/login");
+        super(driver, "Account of spare:Авторизация", "/login");
     }
 
-    public void openLoginPage(){
+    @Step
+    public void openLoginPage() {
         open(configProperties.base_url());
         checkTitle();
         checkCurrentUrl();
     }
 
+    @Step
     public void enterLogin(String login) {
         enterText(loginInput, login);
     }
 
+    @Step
     public void enterPass(String pass) {
         enterText(passInput, pass);
     }
 
+    @Step
     public void clickButtonLogin() {
         actionsWithOurElement.clickOnElement(buttonLogin);
     }
 
-
-    public void loginUser(String login, String pass){
+    @Step
+    public void loginUser(String login, String pass) {
         openLoginPage();
         checkIfThisPageIsOpened();
         enterLogin(login);

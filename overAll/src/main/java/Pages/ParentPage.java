@@ -1,6 +1,7 @@
 package Pages;
 
 
+import io.qameta.allure.Step;
 import libs.ActionsWithOurElement;
 import libs.ConfigProperties;
 import org.aeonbits.owner.ConfigFactory;
@@ -35,6 +36,7 @@ public abstract class ParentPage {
      * Method for open page with url
      * @param url
      */
+    @Step
     public void open(String url){
         try {
             driver.get(url);
@@ -45,6 +47,7 @@ public abstract class ParentPage {
         }
     }
 
+    @Step
     public void checkCurrentUrl(){
         try {
             Assert.assertEquals("Url is not expected", driver.getCurrentUrl(), expectedUrl);
@@ -54,6 +57,7 @@ public abstract class ParentPage {
         }
     }
 
+    @Step
     public void checkTitle(){
         try {
             Assert.assertThat("Title not match", driver.getTitle(),
@@ -64,15 +68,18 @@ public abstract class ParentPage {
         }
     }
 
+    @Step
     public void checkIfThisPageIsOpened(){
         checkTitle();
         checkCurrentUrl();
     }
 
+    @Step
     public String getTitle() {
         return driver.getTitle();
     }
 
+    @Step
     public void checkTitleH1PresentOnPageWithText(String expectedText) {
         actionsWithOurElement.checkTextInElement(".//H1",expectedText);
     }

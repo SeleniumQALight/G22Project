@@ -6,6 +6,7 @@ import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.SparesPage;
 import Pages.WorkersPage;
+import io.qameta.allure.Step;
 import libs.ConfigProperties;
 import libs.Utils;
 import org.aeonbits.owner.ConfigFactory;
@@ -141,7 +142,8 @@ public class ParentTest {
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");
-            File fileFF = new File(".././drivers/chromedriver.exe");
+//            File fileFF = new File(".././drivers/chromedriver.exe");
+            File fileFF = new File("./driversMaven/binaries/windows/googlechrome/64bit/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Chrome is started");
@@ -185,6 +187,7 @@ public class ParentTest {
     }
 
 
+    @Step
     protected void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {
             utils.screenShot(pathToScreenShot, driver);
@@ -194,6 +197,7 @@ public class ParentTest {
         setTestPass();
     }
 
+    @Step
     protected void checkAC(String message, Boolean actual, Boolean expected) {
         if (!(actual == expected)) {
             utils.screenShot(pathToScreenShot, driver);

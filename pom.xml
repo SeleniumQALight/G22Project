@@ -25,6 +25,7 @@
         <module>ikonnikovProj</module>
         <module>buchekProj</module>
         <module>gannenkoProj</module>
+        <module>cucumberProj</module>
     </modules>
     <dependencies>
         <dependency>

@@ -1,0 +1,7 @@
+http://toolsqa.com/cucumber/data-driven-testing-in-cucumber/
+
+runner
+mvn clean test
+
+IDEA
+install cucumber and gerkin plugings

@@ -11,6 +11,7 @@ import org.junit.Assert;
 public class MainRestSteps {
 
     final private String baseUrl = "http://restapi.demoqa.com";
+    final private String baseUrlPrivat = "http://api.privatbank.ua";
 
     public RequestSpecification setBaseUrlForDemoQaWetherCity() {
         // Specify the base URL to the RESTful web service
@@ -22,6 +23,11 @@ public class MainRestSteps {
         return RestAssured.given();
     }
 
+    public RequestSpecification setBaseUrlForPrivatApi() {
+        RestAssured.baseURI = baseUrlPrivat + "/p24api/pubinfo";
+        return RestAssured.given().queryParam("json").queryParam("exchange").queryParam("coursid", 5);
+    }
+
     public RequestSpecification setBaseUrlForCustomer() {
         RestAssured.baseURI = baseUrl + "/customer";
         return RestAssured.given();
@@ -31,6 +37,10 @@ public class MainRestSteps {
         // Make a request to the server by specifying the method Type and the method URL.
         // This will return the Response from the server. Store the response in a variable.
         return setBaseUrlForDemoQaWetherCity().request(Method.GET, addToUrl);
+    }
+
+    public Response getRequestToPrivatApi() {
+        return setBaseUrlForPrivatApi().request(Method.GET);
     }
 
     public void checkResponseCode(Response response, int expectedStatusCode) {
@@ -52,6 +62,12 @@ public class MainRestSteps {
 
     public Response getRequestAndVerifyStatusCode(String addToUrl) {
         Response response = getRequest(addToUrl);
+        checkResponseCode(response, 200);
+        return response;
+    }
+
+    public Response getRequestToPrivatApiAndVerifyStatusCode() {
+        Response response = getRequestToPrivatApi();
         checkResponseCode(response, 200);
         return response;
     }

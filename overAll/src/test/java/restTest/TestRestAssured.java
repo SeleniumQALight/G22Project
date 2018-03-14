@@ -1,20 +1,53 @@
 package restTest;
 
 import RestSteps.MainRestSteps;
+
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
+import libs.CurrencyValues;
 import libs.ResponseStructureForRestAssuredTest;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+
 import static libs.Utils.getDateAndTimeFormated;
 
 
 public class TestRestAssured {
     MainRestSteps mainRestSteps = new MainRestSteps();
+    @Test
+    @Ignore
+    public void getCursDetails() {
+
+        Response response = mainRestSteps.getRequestToPrivatApiAndVerifyStatusCode();
+
+        ResponseBody responseBody = mainRestSteps.getResponseBody(response);
+
+//        System.out.println("Privat Curse" +responseBody.toString());
+//        String testString = responseBody.asString();
+//        String [] testString1 = testString.split("\"");
+//
+//        for (int i = 0; i < testString1.length; i++) {
+//            System.out.println(i + " -> " + testString1 [i]);
+//        }
+//        System.out.println(" Kust " + testString1[3] + " = " + testString1[11] + " and " + testString1[15]);
+
+        CurrencyValues[] responseStructure = responseBody.as(CurrencyValues[].class);
+
+        for (CurrencyValues currencyElement : responseStructure ) {
+            System.out.println("Cur " + currencyElement.ccy + " to " + currencyElement.base_ccy + " has for buy " + currencyElement.buy + " and for sale " + currencyElement.sale);
+        }
+
+
+
+    }
+
+
 
     @Test
     @Ignore
@@ -32,6 +65,7 @@ public class TestRestAssured {
     }
 
     @Test
+    @Ignore
     public void registrationSuccessful() {
         String dateTime = getDateAndTimeFormated();
         RequestSpecification request = mainRestSteps.setBaseUrlForCustomer();

@@ -32,7 +32,7 @@ public class TestDataBase_Test {
 //		dBMySQL.changeTable("CREATE TABLE seleniumTable (idNumber int,login varchar(255), passWord varchar(255))"
 //				 );
 		
-		dBMySQL.changeTable("INSERT INTO seleniumTable VALUES (2,'test','pass')");
+//		dBMySQL.changeTable("INSERT INTO seleniumTable VALUES (2,'test','pass')");
 		List<Map<String, String>> testMySQLValue
 				= dBMySQL.selectTable("select * from seleniumTable ");
 		log.info("value -- " + testMySQLValue);

@@ -7,6 +7,7 @@ import Pages.LoginPage;
 import Pages.PageWithHtmlElements;
 import Pages.SparesPage;
 import Pages.WorkersPage;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import libs.ConfigProperties;
 import libs.Utils;
@@ -17,8 +18,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -103,7 +108,7 @@ public class ParentTest {
             if (!isTestPass) {
                 utils.screenShot(pathToScreenShot, driver);
             }
-            driver.quit();
+//            driver.quit();
         }
     }
 
@@ -189,7 +194,39 @@ public class ParentTest {
         }
     }
 
+    @Rule
+    public TestWatcher watchman = new TestWatcher() {
+        String fileName;
 
+        @Override
+        protected void failed(Throwable e, Description description) {
+            screenshot();
+        }
+
+        @Attachment(value = "Page screenshot", type = "image/png")
+        public byte[] saveScreenshot(byte[] screenShot) {
+            return screenShot;
+        }
+
+        public void screenshot() {
+            if (driver == null) {
+                log.info("Driver for screenshot not found");
+                return;
+            }
+
+            saveScreenshot(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+
+        }
+        @Override
+        protected void finished(Description description) {
+            log.info(String.format("Finished test: %s::%s", description.getClassName(), description.getMethodName()));
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                log.error(e);
+            }
+        }
+    };
     @Step
     protected void checkAC(String message, String actual, String expected) {
         if (!actual.equals(expected)) {

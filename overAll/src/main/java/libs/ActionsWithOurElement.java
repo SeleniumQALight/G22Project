@@ -52,11 +52,11 @@ public class ActionsWithOurElement {
         try {
             textInput.clear();
             textInput.sendKeys(text);
-            logger.info("'" + text + "' was inputed into " + textInput.getName());
+            logger.info("'" + text + "' was inputed into '" + textInput.getName() + "'");
 
         }catch (Exception e){
-            logger.error("Can not work with element " + textInput.getName() + "\n " + e );
-            Assert.fail("Can not work with element "  + textInput.getName() + "\n " + e );
+            logger.error("Can not work with element '" + textInput.getName() + "'\n " + e );
+            Assert.fail("Can not work with element '"  + textInput.getName() + "'\n " + e );
         }
     }
 

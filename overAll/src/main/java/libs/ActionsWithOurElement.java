@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import ru.yandex.qatools.htmlelements.element.TextInput;
 import static org.hamcrest.Matchers.is;
 
 public class ActionsWithOurElement {
@@ -44,6 +45,18 @@ public class ActionsWithOurElement {
             logger.info(text + " was inputed into " + element);
         } catch (Exception e) {
             printErrorAndStopTest();
+        }
+    }
+
+    public void enterText(TextInput textInput, String text){
+        try {
+            textInput.clear();
+            textInput.sendKeys(text);
+            logger.info("'" + text + "' was inputed into " + textInput.getName());
+
+        }catch (Exception e){
+            logger.error("Can not work with element " + textInput.getName() + "\n " + e );
+            Assert.fail("Can not work with element "  + textInput.getName() + "\n " + e );
         }
     }
 

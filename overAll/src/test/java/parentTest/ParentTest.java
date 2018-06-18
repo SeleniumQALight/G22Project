@@ -4,6 +4,7 @@ import Pages.EditSparePage;
 import Pages.EditWorkerPage;
 import Pages.HomePage;
 import Pages.LoginPage;
+import Pages.PageWithHtmlElements;
 import Pages.SparesPage;
 import Pages.WorkersPage;
 import io.qameta.allure.Step;
@@ -58,6 +59,7 @@ public class ParentTest {
     protected EditWorkerPage editWorkerPage;
     protected SparesPage sparesPage;
     protected EditSparePage editSparePage;
+    protected PageWithHtmlElements pageWithHtmlElements ;
 
     public ParentTest(String browser) {
         this.browser = browser;
@@ -128,6 +130,7 @@ public class ParentTest {
         editWorkerPage = new EditWorkerPage(driver);
         sparesPage = new SparesPage(driver);
         editSparePage = new EditSparePage(driver);
+        pageWithHtmlElements = new PageWithHtmlElements(driver);
     }
 
     private void getDriver() {
@@ -142,8 +145,8 @@ public class ParentTest {
             log.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             log.info("Chrome will be started");
-//            File fileFF = new File(".././drivers/chromedriver.exe");
-            File fileFF = new File("./driversMaven/binaries/windows/googlechrome/64bit/chromedriver.exe");
+            File fileFF = new File(".././drivers/chromedriver.exe");
+//            File fileFF = new File("./driversMaven/binaries/windows/googlechrome/64bit/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
             driver = new ChromeDriver();
             log.info(" Chrome is started");

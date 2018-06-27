@@ -3,8 +3,9 @@ package parentTest;
 import Pages.EditSparePage;
 import Pages.EditWorkerPage;
 import Pages.HomePage;
+import Pages.HomePageWithHtmlElements;
 import Pages.LoginPage;
-import Pages.PageWithHtmlElements;
+import Pages.LoginPageWithHtmlElements;
 import Pages.SparesPage;
 import Pages.WorkersPage;
 import io.qameta.allure.Attachment;
@@ -64,7 +65,8 @@ public class ParentTest {
     protected EditWorkerPage editWorkerPage;
     protected SparesPage sparesPage;
     protected EditSparePage editSparePage;
-    protected PageWithHtmlElements pageWithHtmlElements ;
+    protected LoginPageWithHtmlElements loginPageWithHtmlElements;
+    protected HomePageWithHtmlElements homePageWithHtmlElements;
 
     public ParentTest(String browser) {
         this.browser = browser;
@@ -135,7 +137,8 @@ public class ParentTest {
         editWorkerPage = new EditWorkerPage(driver);
         sparesPage = new SparesPage(driver);
         editSparePage = new EditSparePage(driver);
-        pageWithHtmlElements = new PageWithHtmlElements(driver);
+        loginPageWithHtmlElements = new LoginPageWithHtmlElements(driver);
+        homePageWithHtmlElements = new HomePageWithHtmlElements(driver);
     }
 
     private void getDriver() {

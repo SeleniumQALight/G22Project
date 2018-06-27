@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import ru.yandex.qatools.htmlelements.element.Button;
+import ru.yandex.qatools.htmlelements.element.HtmlElement;
+import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import static org.hamcrest.Matchers.is;
 
@@ -89,6 +92,28 @@ public class ActionsWithOurElement {
 //            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked ");
+        } catch (Exception e) {
+            printErrorAndStopTest();
+        }
+    }
+
+    public void clickOnElement(Link element) {
+        try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+//            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+            element.click();
+            logger.info("Link '" + element.getName() + "'  was clicked " );
+        } catch (Exception e) {
+            printErrorAndStopTest();
+        }
+    }
+
+    public void clickOnElement(Button element) {
+        try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+//            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+            element.click();
+            logger.info("Button '" + element.getName() + "'  was clicked " );
         } catch (Exception e) {
             printErrorAndStopTest();
         }

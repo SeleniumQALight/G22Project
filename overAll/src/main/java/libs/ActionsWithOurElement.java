@@ -10,6 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import ru.yandex.qatools.htmlelements.element.Button;
+import ru.yandex.qatools.htmlelements.element.HtmlElement;
+import ru.yandex.qatools.htmlelements.element.Link;
+import ru.yandex.qatools.htmlelements.element.TextInput;
 import static org.hamcrest.Matchers.is;
 
 public class ActionsWithOurElement {
@@ -47,6 +51,18 @@ public class ActionsWithOurElement {
         }
     }
 
+    public void enterText(TextInput textInput, String text){
+        try {
+            textInput.clear();
+            textInput.sendKeys(text);
+            logger.info("'" + text + "' was inputed into '" + textInput.getName() + "'");
+
+        }catch (Exception e){
+            logger.error("Can not work with element '" + textInput.getName() + "'\n " + e );
+            Assert.fail("Can not work with element '"  + textInput.getName() + "'\n " + e );
+        }
+    }
+
     public void clickOnElement(String xpathLocator) {
         try {
             clickOnElement(driver.findElement(By.xpath(xpathLocator)));
@@ -76,6 +92,28 @@ public class ActionsWithOurElement {
 //            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked ");
+        } catch (Exception e) {
+            printErrorAndStopTest();
+        }
+    }
+
+    public void clickOnElement(Link element) {
+        try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+//            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+            element.click();
+            logger.info("Link '" + element.getName() + "'  was clicked " );
+        } catch (Exception e) {
+            printErrorAndStopTest();
+        }
+    }
+
+    public void clickOnElement(Button element) {
+        try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+//            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
+            element.click();
+            logger.info("Button '" + element.getName() + "'  was clicked " );
         } catch (Exception e) {
             printErrorAndStopTest();
         }

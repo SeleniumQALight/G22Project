@@ -18,7 +18,11 @@
     <compiler.version>1.7</compiler.version>
   </properties>
   <dependencies>
-
+    <dependency>
+      <groupId>ru.yandex.qatools.htmlelements</groupId>
+      <artifactId>htmlelements-java</artifactId>
+      <version>1.18</version> <!-- 1.18+ is SELENIUM 3.5.1+ compatible -->
+    </dependency>
     <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->
     <dependency>
       <groupId>org.hamcrest</groupId>

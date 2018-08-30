@@ -1,10 +1,10 @@
 # language: ru
-Функция: github логин
+Функция: Авторизация на github
 
 
   @q1
-  Сценарий: login without username and password
-    Допустим user is on github homepage
-    Когда user clicks on Sign in button
-    Тогда user is displayed login screen
+  Сценарий: Проверка логина без имя пользователя и пароля
+    Допустим пользователь находится на Домашней странице
+    Когда пользователь нажимает на кнопку 'Вход'
+    Тогда пользователь видит Логин страницу
 

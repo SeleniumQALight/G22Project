@@ -20,7 +20,7 @@ public class SeleniumFunctions {
 
     public void createDriver() throws MalformedURLException,
             InterruptedException {
-        File fileFF = new File(".././drivers/chromedriver.exe");
+        File fileFF = new File("D:\\workSpace\\G22Project\\drivers\\chromedriver.exe");
 
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
 
